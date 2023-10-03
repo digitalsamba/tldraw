@@ -60,22 +60,30 @@ export const TAB_ID: string =
 	window?.[tabIdKey] ?? saved_tab_id ?? `TLDRAW_INSTANCE_STATE_V1_` + uniqueId()
 
 if (window) {
-	window[tabIdKey] = TAB_ID
-	if (iOS()) {
-		// iOS does not trigger beforeunload
-		// so we need to keep the sessionStorage value around
-		// and hope the user doesn't figure out a way to duplicate their tab
-		// in which case they'll have two tabs with the same UI state.
-		// It's not a big deal, but it's not ideal.
-		// And anyway I can't see a way to duplicate a tab in iOS Safari.
-		window.sessionStorage[tabIdKey] = TAB_ID
-	} else {
-		delete window.sessionStorage[tabIdKey]
+	try {
+		window[tabIdKey] = TAB_ID
+		if (iOS()) {
+			// iOS does not trigger beforeunload
+			// so we need to keep the sessionStorage value around
+			// and hope the user doesn't figure out a way to duplicate their tab
+			// in which case they'll have two tabs with the same UI state.
+			// It's not a big deal, but it's not ideal.
+			// And anyway I can't see a way to duplicate a tab in iOS Safari.
+			window.sessionStorage[tabIdKey] = TAB_ID
+		} else {
+			delete window.sessionStorage[tabIdKey]
+		}
+	} catch {
+		// do nothing
 	}
 }
 
 window?.addEventListener('beforeunload', () => {
-	window.sessionStorage[tabIdKey] = TAB_ID
+	try {
+		window.sessionStorage[tabIdKey] = TAB_ID
+	} catch {
+		// do nothing
+	}
 })
 
 const Versions = {
