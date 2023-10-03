@@ -14,7 +14,7 @@ import {
 	TldrawEditorProps,
 	assert,
 	useEditor,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { useCallback, useDebugValue, useLayoutEffect, useMemo, useRef } from 'react'
 import { TldrawHandles } from './canvas/TldrawHandles'
 import { TldrawHoveredShapeIndicator } from './canvas/TldrawHoveredShapeIndicator'

@@ -1,4 +1,9 @@
-import { StateNode, TLInterruptEvent, TLKeyboardEvent, TLPointerEventInfo } from '@tldraw/editor'
+import {
+	StateNode,
+	TLInterruptEvent,
+	TLKeyboardEvent,
+	TLPointerEventInfo,
+} from '@digitalsamba/editor'
 import { Idle } from './children/Idle'
 import { Pointing } from './children/Pointing'
 import { ZoomBrushing } from './children/ZoomBrushing'

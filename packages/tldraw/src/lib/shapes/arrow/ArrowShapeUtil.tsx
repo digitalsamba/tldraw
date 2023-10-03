@@ -35,7 +35,7 @@ import {
 	getStraightArrowHandlePath,
 	toDomPrecision,
 	useIsEditing,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import React from 'react'
 import { ShapeFill, getShapeFillSvg, useDefaultColorTheme } from '../shared/ShapeFill'
 import { createTextSvgElementFromSpans } from '../shared/createTextSvgElementFromSpans'

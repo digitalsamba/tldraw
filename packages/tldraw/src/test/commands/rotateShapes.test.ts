@@ -1,4 +1,4 @@
-import { createShapeId } from '@tldraw/editor'
+import { createShapeId } from '@digitalsamba/editor'
 import { TestEditor } from '../TestEditor'
 
 let editor: TestEditor

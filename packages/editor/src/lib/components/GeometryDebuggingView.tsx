@@ -1,5 +1,5 @@
-import { track } from '@tldraw/state'
-import { modulate } from '@tldraw/utils'
+import { track } from '@digitalsamba/state'
+import { modulate } from '@digitalsamba/utils'
 import { useEffect, useState } from 'react'
 import { HIT_TEST_MARGIN } from '../constants'
 import { useEditor } from '../hooks/useEditor'

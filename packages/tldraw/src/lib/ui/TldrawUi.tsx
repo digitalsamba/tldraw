@@ -1,5 +1,5 @@
+import { useEditor, useValue } from '@digitalsamba/editor'
 import { ToastProvider } from '@radix-ui/react-toast'
-import { useEditor, useValue } from '@tldraw/editor'
 import classNames from 'classnames'
 import React, { ReactNode } from 'react'
 import { TldrawUiContextProvider, TldrawUiContextProviderProps } from './TldrawUiContextProvider'
@@ -24,14 +24,14 @@ import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { useTranslation } from './hooks/useTranslation/useTranslation'
 
 /**
- * Props for the {@link @tldraw/tldraw#Tldraw} and {@link TldrawUi} components.
+ * Props for the {@link @digitalsamba/tldraw#Tldraw} and {@link TldrawUi} components.
  *
  * @public
  */
 export type TldrawUiProps = TldrawUiBaseProps & TldrawUiContextProviderProps
 
 /**
- * Base props for the {@link @tldraw/tldraw#Tldraw} and {@link TldrawUi} components.
+ * Base props for the {@link @digitalsamba/tldraw#Tldraw} and {@link TldrawUi} components.
  *
  * @public
  */

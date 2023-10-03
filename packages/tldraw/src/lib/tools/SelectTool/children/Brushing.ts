@@ -16,7 +16,7 @@ import {
 	Vec2d,
 	pointInPolygon,
 	polygonsIntersect,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 export class Brushing extends StateNode {
 	static override id = 'brushing'

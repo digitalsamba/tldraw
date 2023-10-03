@@ -1,4 +1,4 @@
-import { TLFrameShape, TLShapeId, useEditor } from '@tldraw/editor'
+import { TLFrameShape, TLShapeId, useEditor } from '@digitalsamba/editor'
 import { useCallback } from 'react'
 import {
 	TLExportType,

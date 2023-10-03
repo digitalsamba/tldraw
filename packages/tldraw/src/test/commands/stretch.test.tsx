@@ -1,4 +1,4 @@
-import { PI, TLShapeId } from '@tldraw/editor'
+import { PI, TLShapeId } from '@digitalsamba/editor'
 import { TestEditor } from '../TestEditor'
 import { TL } from '../test-jsx'
 

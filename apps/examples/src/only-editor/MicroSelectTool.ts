@@ -1,4 +1,4 @@
-import { StateNode, TLEventHandlers, TLGroupShape, createShapeId } from '@tldraw/tldraw'
+import { StateNode, TLEventHandlers, TLGroupShape, createShapeId } from '@digitalsamba/tldraw'
 
 /*
 This is a very small example of a state node that implements a "select" tool.

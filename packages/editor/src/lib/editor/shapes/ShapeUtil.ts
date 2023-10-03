@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Migrations } from '@tldraw/store'
-import { ShapeProps, TLHandle, TLShape, TLShapePartial, TLUnknownShape } from '@tldraw/tlschema'
+import { Migrations } from '@digitalsamba/store'
+import {
+	ShapeProps,
+	TLHandle,
+	TLShape,
+	TLShapePartial,
+	TLUnknownShape,
+} from '@digitalsamba/tlschema'
 import { Box2d } from '../../primitives/Box2d'
 import { Vec2d } from '../../primitives/Vec2d'
 import { Geometry2d } from '../../primitives/geometry/Geometry2d'

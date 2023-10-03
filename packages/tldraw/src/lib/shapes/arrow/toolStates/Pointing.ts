@@ -1,4 +1,4 @@
-import { StateNode, TLArrowShape, TLEventHandlers, createShapeId } from '@tldraw/editor'
+import { StateNode, TLArrowShape, TLEventHandlers, createShapeId } from '@digitalsamba/editor'
 
 export class Pointing extends StateNode {
 	static override id = 'pointing'

@@ -1,4 +1,9 @@
-import { AssetRecordType, TLAsset, TLExternalAssetContent, getHashForString } from '@tldraw/tldraw'
+import {
+	AssetRecordType,
+	TLAsset,
+	TLExternalAssetContent,
+	getHashForString,
+} from '@digitalsamba/tldraw'
 import { rpc } from './rpc'
 
 export const truncateStringWithEllipsis = (str: string, maxLength: number) => {

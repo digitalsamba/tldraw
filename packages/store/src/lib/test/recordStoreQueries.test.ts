@@ -1,4 +1,4 @@
-import { atom, RESET_VALUE } from '@tldraw/state'
+import { atom, RESET_VALUE } from '@digitalsamba/state'
 import { BaseRecord, RecordId } from '../BaseRecord'
 import { createRecordType } from '../RecordType'
 import { Store } from '../Store'

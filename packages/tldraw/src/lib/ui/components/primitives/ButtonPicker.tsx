@@ -7,7 +7,7 @@ import {
 	getDefaultColorTheme,
 	useEditor,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import classNames from 'classnames'
 import * as React from 'react'
 import { useRef } from 'react'

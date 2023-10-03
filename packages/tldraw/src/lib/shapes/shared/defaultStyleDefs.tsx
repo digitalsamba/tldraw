@@ -11,7 +11,7 @@ import {
 	TLShapeUtilCanvasSvgDef,
 	debugFlags,
 	useEditor,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 /** @public */

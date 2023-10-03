@@ -1,4 +1,4 @@
-import { Editor, uniqueId } from '@tldraw/editor'
+import { Editor, uniqueId } from '@digitalsamba/editor'
 import { createContext, useCallback, useContext, useState } from 'react'
 
 /** @public */

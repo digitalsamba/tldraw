@@ -1,6 +1,6 @@
-import { BaseRecord } from '@tldraw/store'
-import { JsonObject } from '@tldraw/utils'
-import { T } from '@tldraw/validate'
+import { BaseRecord } from '@digitalsamba/store'
+import { JsonObject } from '@digitalsamba/utils'
+import { T } from '@digitalsamba/validate'
 import { idValidator } from '../misc/id-validator'
 import { TLAssetId } from '../records/TLAsset'
 

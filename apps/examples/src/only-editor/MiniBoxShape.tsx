@@ -1,4 +1,4 @@
-import { BaseBoxShapeUtil, HTMLContainer, TLBaseShape } from '@tldraw/tldraw'
+import { BaseBoxShapeUtil, HTMLContainer, TLBaseShape } from '@digitalsamba/tldraw'
 
 export type MiniBoxShape = TLBaseShape<'box', { w: number; h: number; color: string }>
 

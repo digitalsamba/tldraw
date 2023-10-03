@@ -16,15 +16,15 @@ export {
 	whyAmIRunning,
 	type Atom,
 	type Signal,
-} from '@tldraw/state'
+} from '@digitalsamba/state'
 // eslint-disable-next-line local/no-export-star
-export * from '@tldraw/store'
+export * from '@digitalsamba/store'
 // eslint-disable-next-line local/no-export-star
-export * from '@tldraw/tlschema'
+export * from '@digitalsamba/tlschema'
 // eslint-disable-next-line local/no-export-star
-export * from '@tldraw/utils'
+export * from '@digitalsamba/utils'
 // eslint-disable-next-line local/no-export-star
-export * from '@tldraw/validate'
+export * from '@digitalsamba/validate'
 export {
 	ErrorScreen,
 	LoadingScreen,

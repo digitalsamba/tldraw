@@ -1,4 +1,4 @@
-import { Editor, TLExternalContentSource, VecLike } from '@tldraw/editor'
+import { Editor, TLExternalContentSource, VecLike } from '@digitalsamba/editor'
 import { pasteFiles } from './pasteFiles'
 
 /**

@@ -1,4 +1,4 @@
-import { atom } from '@tldraw/state'
+import { atom } from '@digitalsamba/state'
 import { getAtomManager } from './getRecordManager'
 
 describe('atom manager', () => {

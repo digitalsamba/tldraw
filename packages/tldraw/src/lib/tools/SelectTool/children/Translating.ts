@@ -13,7 +13,7 @@ import {
 	Vec2d,
 	compact,
 	isPageId,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { DragAndDropManager } from '../DragAndDropManager'
 
 export class Translating extends StateNode {

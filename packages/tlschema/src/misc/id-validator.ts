@@ -1,5 +1,5 @@
-import type { RecordId, UnknownRecord } from '@tldraw/store'
-import { T } from '@tldraw/validate'
+import type { RecordId, UnknownRecord } from '@digitalsamba/store'
+import { T } from '@digitalsamba/validate'
 
 /** @internal */
 export function idValidator<Id extends RecordId<UnknownRecord>>(

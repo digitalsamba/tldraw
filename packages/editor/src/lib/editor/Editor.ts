@@ -1,5 +1,5 @@
-import { EMPTY_ARRAY, atom, computed, transact } from '@tldraw/state'
-import { ComputedCache, RecordType } from '@tldraw/store'
+import { EMPTY_ARRAY, atom, computed, transact } from '@digitalsamba/state'
+import { ComputedCache, RecordType } from '@digitalsamba/store'
 import {
 	CameraRecordType,
 	InstancePageStateRecordType,
@@ -37,7 +37,7 @@ import {
 	isPageId,
 	isShape,
 	isShapeId,
-} from '@tldraw/tlschema'
+} from '@digitalsamba/tlschema'
 import {
 	JsonObject,
 	annotateError,
@@ -49,7 +49,7 @@ import {
 	hasOwnProperty,
 	sortById,
 	structuredClone,
-} from '@tldraw/utils'
+} from '@digitalsamba/utils'
 import { EventEmitter } from 'eventemitter3'
 import { TLUser, createTLUser } from '../config/createTLUser'
 import { checkShapesAndAddCore } from '../config/defaultShapes'
@@ -7306,7 +7306,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	}
 
 	/**
-	 * Set the value of a {@link @tldraw/tlschema#StyleProp} for the selected shapes.
+	 * Set the value of a {@link @digitalsamba/tlschema#StyleProp} for the selected shapes.
 	 *
 	 * @example
 	 * ```ts
@@ -7338,7 +7338,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	}
 
 	/**
-	 * Set the value of a {@link @tldraw/tlschema#StyleProp}. This change will be applied to the currently selected shapes.
+	 * Set the value of a {@link @digitalsamba/tlschema#StyleProp}. This change will be applied to the currently selected shapes.
 	 *
 	 * @example
 	 * ```ts

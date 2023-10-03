@@ -1,4 +1,4 @@
-import { BaseBoxShapeUtil, TLBaseShape } from '@tldraw/tldraw'
+import { BaseBoxShapeUtil, TLBaseShape } from '@digitalsamba/tldraw'
 
 export type ErrorShape = TLBaseShape<'error', { w: number; h: number; message: string }>
 

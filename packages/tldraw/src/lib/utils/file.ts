@@ -18,7 +18,7 @@ import {
 	exhaustiveSwitchError,
 	partition,
 	transact,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { TLUiToastsContextType } from '../ui/hooks/useToastsProvider'
 import { TLUiTranslationKey } from '../ui/hooks/useTranslation/TLUiTranslationKey'
 import { buildFromV1Document } from './buildFromV1Document'

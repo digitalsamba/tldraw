@@ -1,4 +1,4 @@
-import { TLUserPreferences, atom, createTLUser } from '@tldraw/editor'
+import { TLUserPreferences, atom, createTLUser } from '@digitalsamba/editor'
 import { TestEditor } from './TestEditor'
 
 let editor: TestEditor

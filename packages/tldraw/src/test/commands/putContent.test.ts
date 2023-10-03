@@ -1,4 +1,4 @@
-import { TLContent, structuredClone } from '@tldraw/editor'
+import { TLContent, structuredClone } from '@digitalsamba/editor'
 import { TestEditor } from '../TestEditor'
 
 let editor: TestEditor

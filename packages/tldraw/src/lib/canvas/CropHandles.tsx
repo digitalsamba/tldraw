@@ -1,4 +1,4 @@
-import { toDomPrecision } from '@tldraw/editor'
+import { toDomPrecision } from '@digitalsamba/editor'
 import classNames from 'classnames'
 
 interface CropHandlesProps {

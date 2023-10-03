@@ -1,4 +1,4 @@
-import { StateNode } from '@tldraw/editor'
+import { StateNode } from '@digitalsamba/editor'
 import { Idle } from './toolStates/Idle'
 import { Pointing } from './toolStates/Pointing'
 

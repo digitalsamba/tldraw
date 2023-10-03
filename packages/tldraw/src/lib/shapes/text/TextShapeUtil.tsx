@@ -17,7 +17,7 @@ import {
 	textShapeMigrations,
 	textShapeProps,
 	toDomPrecision,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { createTextSvgElementFromSpans } from '../shared/createTextSvgElementFromSpans'
 import { FONT_FAMILIES, FONT_SIZES, TEXT_PROPS } from '../shared/default-shape-constants'
 import { getFontDefForExport } from '../shared/defaultStyleDefs'

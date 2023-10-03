@@ -1,4 +1,4 @@
-import { TLArrowShape, TLArrowShapeTerminal, TLShape } from '@tldraw/tlschema'
+import { TLArrowShape, TLArrowShapeTerminal, TLShape } from '@digitalsamba/tlschema'
 import { Matrix2d } from '../../../../primitives/Matrix2d'
 import { Vec2d } from '../../../../primitives/Vec2d'
 import { Editor } from '../../../Editor'

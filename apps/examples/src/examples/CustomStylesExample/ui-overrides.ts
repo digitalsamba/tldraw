@@ -1,4 +1,4 @@
-import { TLUiMenuGroup, TLUiOverrides, menuItem, toolbarItem } from '@tldraw/tldraw'
+import { TLUiMenuGroup, TLUiOverrides, menuItem, toolbarItem } from '@digitalsamba/tldraw'
 
 export const uiOverrides: TLUiOverrides = {
 	tools(editor, tools) {

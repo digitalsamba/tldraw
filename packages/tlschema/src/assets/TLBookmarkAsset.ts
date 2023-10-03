@@ -1,5 +1,5 @@
-import { defineMigrations } from '@tldraw/store'
-import { T } from '@tldraw/validate'
+import { defineMigrations } from '@digitalsamba/store'
+import { T } from '@digitalsamba/validate'
 import { createAssetValidator, TLBaseAsset } from './TLBaseAsset'
 
 /**

@@ -1,5 +1,5 @@
-import { PageRecordType } from '@tldraw/tlschema'
-import { promiseWithResolve } from '@tldraw/utils'
+import { PageRecordType } from '@digitalsamba/tlschema'
+import { promiseWithResolve } from '@digitalsamba/utils'
 import { createTLStore } from '../../config/createTLStore'
 import { TLLocalSyncClient } from './TLLocalSyncClient'
 import * as idb from './indexedDb'

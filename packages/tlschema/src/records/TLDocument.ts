@@ -1,6 +1,6 @@
-import { BaseRecord, createRecordType, defineMigrations, RecordId } from '@tldraw/store'
-import { JsonObject } from '@tldraw/utils'
-import { T } from '@tldraw/validate'
+import { BaseRecord, createRecordType, defineMigrations, RecordId } from '@digitalsamba/store'
+import { JsonObject } from '@digitalsamba/utils'
+import { T } from '@digitalsamba/validate'
 
 /**
  * TLDocument

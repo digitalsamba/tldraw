@@ -39,7 +39,7 @@ The editor also exposes many _computed_ values which are derived from other reco
 You can use these properties directly or you can use them in signals.
 
 ```tsx
-import { track, useEditor } from "@tldraw/tldraw"
+import { track, useEditor } from "@digitalsamba/tldraw"
 
 export const SelectedShapeIdsCount = track(() => {
   const editor = useEditor()
@@ -160,7 +160,7 @@ Note that the paths you pass to [`isIn`](/gen/editor/Editor#isIn) or [`isInAny`]
 > If all you're interested in is the state below `root`, there is a convenience property, [`editor.currentToolId`](/gen/editor/Editor#currentToolId), that can help with the editor's currently selected tool.
 
 ```tsx
-import { track, useEditor } from "@tldraw/tldraw"
+import { track, useEditor } from "@digitalsamba/tldraw"
 
 export const CreatingBubbleToolUi = track(() => {
   const editor = useEditor()

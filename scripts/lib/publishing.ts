@@ -28,7 +28,7 @@ function getPackageDetails(dir: string): PackageDetails | null {
 		dir,
 		version: packageJson.version,
 		localDeps: Object.keys(packageJson.dependencies ?? {}).filter((dep) =>
-			dep.startsWith('@tldraw')
+			dep.startsWith('@digitalsamba')
 		),
 	}
 }
@@ -51,11 +51,11 @@ export function setAllVersions(version: string) {
 			path.join(packageDetails.dir, 'package.json'),
 			JSON.stringify(manifest, null, '\t') + '\n'
 		)
-		if (manifest.name === '@tldraw/editor') {
+		if (manifest.name === '@digitalsamba/editor') {
 			const versionFileContents = `export const version = '${version}'\n`
 			writeFileSync(path.join(packageDetails.dir, 'src', 'version.ts'), versionFileContents)
 		}
-		if (manifest.name === '@tldraw/tldraw') {
+		if (manifest.name === '@digitalsamba/tldraw') {
 			const versionFileContents = `export const version = '${version}'\n`
 			writeFileSync(
 				path.join(packageDetails.dir, 'src', 'lib', 'ui', 'version.ts'),
@@ -173,9 +173,9 @@ export async function publish() {
 				nicelog('Waiting for package to be published... attempt', attempt, 'of', total)
 				// fetch the new package directly from the npm registry
 				const newVersion = packageDetails.version
-				const unscopedName = packageDetails.name.replace('@tldraw/', '')
+				const unscopedName = packageDetails.name.replace('@digitalsamba/', '')
 
-				const url = `https://registry.npmjs.org/@tldraw/${unscopedName}/-/${unscopedName}-${newVersion}.tgz`
+				const url = `https://registry.npmjs.org/@digitalsamba/${unscopedName}/-/${unscopedName}-${newVersion}.tgz`
 				nicelog('looking for package at url: ', url)
 				const res = await fetch(url, {
 					method: 'HEAD',

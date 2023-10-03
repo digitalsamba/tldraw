@@ -3,7 +3,7 @@
 import * as Dialog from './lib/ui/components/primitives/Dialog'
 import * as DropdownMenu from './lib/ui/components/primitives/DropdownMenu'
 // eslint-disable-next-line local/no-export-star
-export * from '@tldraw/editor'
+export * from '@digitalsamba/editor'
 export { Tldraw } from './lib/Tldraw'
 export { defaultShapeTools } from './lib/defaultShapeTools'
 export { defaultShapeUtils } from './lib/defaultShapeUtils'

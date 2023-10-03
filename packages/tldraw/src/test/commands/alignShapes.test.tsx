@@ -1,4 +1,4 @@
-import { Box2d, PI, TLShapeId } from '@tldraw/editor'
+import { Box2d, PI, TLShapeId } from '@digitalsamba/editor'
 import { TestEditor } from '../TestEditor'
 import { TL } from '../test-jsx'
 

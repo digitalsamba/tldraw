@@ -5,7 +5,7 @@ import {
 	TLFrameShape,
 	TLGroupShape,
 	TLShapeId,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 export class Pointing extends StateNode {
 	static override id = 'pointing'

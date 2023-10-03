@@ -1,5 +1,5 @@
-import { track } from '@tldraw/state'
-import { TLInstancePresence } from '@tldraw/tlschema'
+import { track } from '@digitalsamba/state'
+import { TLInstancePresence } from '@digitalsamba/tlschema'
 import { useEffect, useRef, useState } from 'react'
 import {
 	COLLABORATOR_CHECK_INTERVAL,

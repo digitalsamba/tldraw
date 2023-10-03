@@ -10,7 +10,7 @@ In order to use the [`<Tldraw/>`](/gen/tldraw/Tldraw) component, the app must be
 
 ### 1. Using a public CDN
 
-By default we serve these assets from a [public CDN called unpkg](https://unpkg.com/browse/@tldraw/assets@2.0.0-alpha.12/), so everything should work out of the box and is a good way to get started.
+By default we serve these assets from a [public CDN called unpkg](https://unpkg.com/browse/@digitalsamba/assets@2.0.0-alpha.12/), so everything should work out of the box and is a good way to get started.
 
 If you would like to customize some of the assets you can pass the customizations to our [`<Tldraw/>`](/gen/tldraw/Tldraw) component. For example, to use a custom icon for the `hand` tool you can do the following:
 
@@ -34,9 +34,9 @@ If you want more flexibility you can also host these assets yourself:
 2. Place the folders in your project's public path.
 3. Pass `assetUrls` prop to our `<Tldraw/>` component to let the component know where the assets live. 
 
-You can use our `getAssetUrls` helper function from the `@tldraw/assets` package to generate these urls for you.
+You can use our `getAssetUrls` helper function from the `@digitalsamba/assets` package to generate these urls for you.
 ```javascript
-import { getAssetUrls } from '@tldraw/assets/selfHosted'
+import { getAssetUrls } from '@digitalsamba/assets/selfHosted'
 
 const assetUrls = getAssetUrls()
 
@@ -49,15 +49,15 @@ If you use a CDN for hosting these files you can specify the base url of your as
 
 ```javascript
 const assetUrls = getAssetUrls({
-    baseUrl: 'https://unpkg.com/@tldraw/assets@2.0.0-alpha.12/',
+    baseUrl: 'https://unpkg.com/@digitalsamba/assets@2.0.0-alpha.12/',
 })
 ```
 
 ### 3. Using a bundler
 
-If you're using a bundler like webpack or rollup, you can import the assets directly from the `@tldraw/assets` package. Here you can use `getAssetUrlsByMetaUrl` helper function:
+If you're using a bundler like webpack or rollup, you can import the assets directly from the `@digitalsamba/assets` package. Here you can use `getAssetUrlsByMetaUrl` helper function:
 ```javascript
-import { getAssetUrlsByMetaUrl } from '@tldraw/assets/urls'
+import { getAssetUrlsByMetaUrl } from '@digitalsamba/assets/urls'
 
 const assetUrls = getAssetUrlsByMetaUrl()
 

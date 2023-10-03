@@ -1,4 +1,4 @@
-import { TLFrameShape, TLGeoShape, approximately, createShapeId } from '@tldraw/editor'
+import { TLFrameShape, TLGeoShape, approximately, createShapeId } from '@digitalsamba/editor'
 import { TestEditor } from './TestEditor'
 
 let editor: TestEditor

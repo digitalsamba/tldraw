@@ -1,5 +1,5 @@
-import { useQuickReactor } from '@tldraw/state'
-import { TLCursorType } from '@tldraw/tlschema'
+import { useQuickReactor } from '@digitalsamba/state'
+import { TLCursorType } from '@digitalsamba/tlschema'
 import { PI, radiansToDegrees } from '../primitives/utils'
 import { useContainer } from './useContainer'
 import { useEditor } from './useEditor'

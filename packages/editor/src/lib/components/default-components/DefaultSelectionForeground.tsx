@@ -1,4 +1,4 @@
-import { useValue } from '@tldraw/state'
+import { useValue } from '@digitalsamba/state'
 import classNames from 'classnames'
 import { ComponentType, useRef } from 'react'
 import { useEditor } from '../../hooks/useEditor'

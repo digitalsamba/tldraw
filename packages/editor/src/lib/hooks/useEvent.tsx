@@ -1,4 +1,4 @@
-import { assert } from '@tldraw/utils'
+import { assert } from '@digitalsamba/utils'
 import { useCallback, useDebugValue, useLayoutEffect, useRef } from 'react'
 
 /**

@@ -1,5 +1,5 @@
-import { StoreSnapshot } from '@tldraw/store'
-import { TLRecord } from '@tldraw/tlschema'
+import { StoreSnapshot } from '@digitalsamba/store'
+import { TLRecord } from '@digitalsamba/tlschema'
 import { useEffect, useRef, useState } from 'react'
 import { TLStoreOptions, createTLStore } from '../config/createTLStore'
 

@@ -5,7 +5,7 @@ import {
 	exhaustiveSwitchError,
 	useEditor,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { TLUiActionItem } from './useActions'
 import { TLUiToolItem } from './useTools'
 import { TLUiTranslationKey } from './useTranslation/TLUiTranslationKey'

@@ -1,4 +1,4 @@
-import { Vec2d } from '@tldraw/editor'
+import { Vec2d } from '@digitalsamba/editor'
 import type { StrokeOptions, StrokePoint } from './types'
 
 const { PI } = Math

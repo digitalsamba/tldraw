@@ -1,5 +1,5 @@
-import { createShapeId, Tldraw, TLShapePartial } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { createShapeId, Tldraw, TLShapePartial } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 import { ErrorShape, ErrorShapeUtil } from './ErrorShape'
 
 const shapes = [ErrorShapeUtil]

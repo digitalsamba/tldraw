@@ -3,7 +3,7 @@ import {
 	TLHoveredShapeIndicatorComponent,
 	useEditor,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 export const TldrawHoveredShapeIndicator: TLHoveredShapeIndicatorComponent = ({ shapeId }) => {
 	const editor = useEditor()

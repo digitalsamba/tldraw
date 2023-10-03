@@ -1,5 +1,5 @@
-import { BaseBoxShapeUtil, Editor, HTMLContainer, TLBaseShape, Tldraw } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { BaseBoxShapeUtil, Editor, HTMLContainer, TLBaseShape, Tldraw } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 import { useCallback } from 'react'
 
 export type IDangerousHtmlShape = TLBaseShape<

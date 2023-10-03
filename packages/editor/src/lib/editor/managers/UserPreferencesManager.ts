@@ -1,4 +1,4 @@
-import { computed } from '@tldraw/state'
+import { computed } from '@digitalsamba/state'
 import {
 	TLUserPreferences,
 	defaultUserPreferences,

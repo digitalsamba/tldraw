@@ -1,4 +1,4 @@
-import { StateNode, TLArrowShape, TLEventHandlers, TLPointerEventInfo } from '@tldraw/editor'
+import { StateNode, TLArrowShape, TLEventHandlers, TLPointerEventInfo } from '@digitalsamba/editor'
 
 export class PointingHandle extends StateNode {
 	static override id = 'pointing_handle'

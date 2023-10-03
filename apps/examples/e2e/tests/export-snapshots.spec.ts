@@ -1,7 +1,7 @@
 export {}
 
 // import test, { Page, expect } from '@playwright/test'
-// import { Editor, TLShapeId, TLShapePartial } from '@tldraw/tldraw'
+// import { Editor, TLShapeId, TLShapePartial } from '@digitalsamba/tldraw'
 // import { rename, writeFile } from 'fs/promises'
 // import { setupPage } from '../shared-e2e'
 

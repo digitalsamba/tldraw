@@ -1,4 +1,4 @@
-import { TLRecord, TLStore } from '@tldraw/tlschema'
+import { TLRecord, TLStore } from '@digitalsamba/tlschema'
 
 /** @public */
 export type TLBeforeCreateHandler<R extends TLRecord> = (record: R, source: 'remote' | 'user') => R

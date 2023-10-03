@@ -1,19 +1,15 @@
 {
-	"name": "@tldraw/monorepo",
+	"name": "@diigtalsamba/tldraw-monorepo",
 	"description": "A tiny little drawing app (monorepo).",
 	"version": "0.0.0",
 	"private": true,
 	"author": {
-		"name": "tldraw GB Ltd.",
-		"email": "hello@tldraw.com"
+		"name": "tldraw GB Ltd."
 	},
 	"homepage": "https://tldraw.dev",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tldraw/tldraw"
-	},
-	"bugs": {
-		"url": "https://github.com/tldraw/tldraw/issues"
+		"url": "https://github.com/digitalsamba/tldraw"
 	},
 	"keywords": [
 		"tldraw",

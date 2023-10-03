@@ -1,5 +1,5 @@
-import { Signal, computed } from '@tldraw/state'
-import { TLInstancePresence, TLStore } from '@tldraw/tlschema'
+import { Signal, computed } from '@digitalsamba/state'
+import { TLInstancePresence, TLStore } from '@digitalsamba/tlschema'
 import { TLUserPreferences, getUserPreferences, setUserPreferences } from './TLUserPreferences'
 
 /** @public */

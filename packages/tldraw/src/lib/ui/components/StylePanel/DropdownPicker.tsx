@@ -1,5 +1,5 @@
+import { SharedStyle, StyleProp } from '@digitalsamba/editor'
 import { Trigger } from '@radix-ui/react-dropdown-menu'
-import { SharedStyle, StyleProp } from '@tldraw/editor'
 import classNames from 'classnames'
 import * as React from 'react'
 import { TLUiTranslationKey } from '../../hooks/useTranslation/TLUiTranslationKey'

@@ -7,7 +7,7 @@ import {
 	Vec2d,
 	clamp,
 	uniqueId,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 export class MinimapManager {
 	constructor(public editor: Editor) {}

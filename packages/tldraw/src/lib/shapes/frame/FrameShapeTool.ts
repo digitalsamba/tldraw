@@ -1,4 +1,4 @@
-import { BaseBoxShapeTool } from '@tldraw/editor'
+import { BaseBoxShapeTool } from '@digitalsamba/editor'
 
 export class FrameShapeTool extends BaseBoxShapeTool {
 	static override id = 'frame'

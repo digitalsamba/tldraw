@@ -1,4 +1,4 @@
-import { Box2d } from '@tldraw/editor'
+import { Box2d } from '@digitalsamba/editor'
 import { TestEditor } from '../TestEditor'
 
 let editor: TestEditor

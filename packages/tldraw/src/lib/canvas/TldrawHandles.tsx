@@ -1,4 +1,4 @@
-import { TLHandlesComponent, useEditor, useValue } from '@tldraw/editor'
+import { TLHandlesComponent, useEditor, useValue } from '@digitalsamba/editor'
 
 export const TldrawHandles: TLHandlesComponent = ({ children }) => {
 	const editor = useEditor()

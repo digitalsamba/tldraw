@@ -1,6 +1,6 @@
-import { atom, computed, EMPTY_ARRAY } from '@tldraw/state'
-import { TLGroupShape, TLParentId, TLShape, TLShapeId, Vec2dModel } from '@tldraw/tlschema'
-import { dedupe, deepCopy } from '@tldraw/utils'
+import { atom, computed, EMPTY_ARRAY } from '@digitalsamba/state'
+import { TLGroupShape, TLParentId, TLShape, TLShapeId, Vec2dModel } from '@digitalsamba/tlschema'
+import { dedupe, deepCopy } from '@digitalsamba/utils'
 import {
 	Box2d,
 	flipSelectionHandleX,

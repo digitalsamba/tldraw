@@ -1,6 +1,6 @@
-import { computed, isUninitialized, RESET_VALUE } from '@tldraw/state'
-import { RecordsDiff } from '@tldraw/store'
-import { isShape, TLParentId, TLRecord, TLShape, TLShapeId, TLStore } from '@tldraw/tlschema'
+import { computed, isUninitialized, RESET_VALUE } from '@digitalsamba/state'
+import { RecordsDiff } from '@digitalsamba/store'
+import { isShape, TLParentId, TLRecord, TLShape, TLShapeId, TLStore } from '@digitalsamba/tlschema'
 import { sortByIndex } from '../../utils/reordering/reordering'
 
 type Parents2Children = Record<TLParentId, TLShapeId[]>

@@ -5,8 +5,8 @@ import {
 	TldrawUi,
 	defaultShapeUtils,
 	defaultTools,
-} from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+} from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 
 export default function ExplodedExample() {
 	return (

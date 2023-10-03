@@ -8,7 +8,7 @@ import {
 	SharedStyleMap,
 	useEditor,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 const selectToolStyles = [DefaultColorStyle, DefaultDashStyle, DefaultFillStyle, DefaultSizeStyle]
 

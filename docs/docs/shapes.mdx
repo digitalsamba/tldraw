@@ -79,7 +79,7 @@ You can create your own **custom shapes**. As an example, let's create a custom 
 In tldraw's data model, each shape is represented by a JSON object. Let's first create a type that describes what this object will look like.
 
 ```ts
-import { TLBaseShape } from '@tldraw/tldraw'
+import { TLBaseShape } from '@digitalsamba/tldraw'
 
 type CardShape = TLBaseShape<
   'card', 
@@ -98,7 +98,7 @@ While tldraw's shapes themselves are simple JSON objects, we use [`ShapeUtil`](/
 Let's create a [`ShapeUtil`](/gen/editor/ShapeUtil) class for the shape.
 
 ```tsx
-import { ShapeUtil, HTMLContainer, Box2d } from '@tldraw/tldraw'
+import { ShapeUtil, HTMLContainer, Box2d } from '@digitalsamba/tldraw'
 
 class CardShapeUtil extends ShapeUtil<CardShape> {
   static type = 'card' as const
@@ -137,8 +137,8 @@ We still have work to do on the `CardShapeUtil` class, but we'll come back to it
 Before we pass the shape down, we need to package it up in a way using the [`defineShape`](/gen/editor/defineShape) function. We can then pass an array of our defined shapes into the [`<Tldraw>`](/gen/tldraw/Tldraw) component's `shapes` prop. 
 
 ```tsx
-import { Tldraw } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { Tldraw } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 
 const MyCardShape = defineShape('card', { util: CardShapeUtil })
 

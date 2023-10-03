@@ -41,10 +41,10 @@ const perPackageExceptions: Record<string, Record<string, () => string | undefin
 	tsconfig: {
 		lint: () => undefined,
 	},
-	'@tldraw/monorepo': {
+	'@digitalsamba/monorepo': {
 		lint: () => 'lazy lint',
 	},
-	'@tldraw/assets': {
+	'@digitalsamba/assets': {
 		test: () => undefined,
 		build: () => undefined,
 		'build-api': () => undefined,
@@ -65,7 +65,7 @@ async function main({ fix }: { fix?: boolean }) {
 		const packageScripts = packageJson.scripts
 
 		let expected =
-			name.startsWith('@tldraw/') &&
+			name.startsWith('@digitalsamba/') &&
 			(relativePath.startsWith('bublic/packages/') || relativePath.startsWith('packages/'))
 				? packageJson.private
 					? expectedPackageScripts

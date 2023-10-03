@@ -1,4 +1,4 @@
-import { Atom, atom, react } from '@tldraw/state'
+import { Atom, atom, react } from '@digitalsamba/state'
 
 // --- 1. DEFINE ---
 //

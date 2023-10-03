@@ -4,7 +4,7 @@ import {
 	serializeTldrawJson,
 	useDefaultHelpers,
 	useEditor,
-} from '@tldraw/tldraw'
+} from '@digitalsamba/tldraw'
 import React from 'react'
 // @ts-ignore
 import type { VscodeMessage } from '../../messages'

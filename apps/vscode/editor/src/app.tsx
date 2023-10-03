@@ -1,8 +1,8 @@
 import { linksUiOverrides } from './utils/links'
 // eslint-disable-next-line import/no-internal-modules
-import '@tldraw/tldraw/tldraw.css'
+import '@digitalsamba/tldraw/tldraw.css'
 // eslint-disable-next-line import/no-internal-modules
-import { getAssetUrlsByImport } from '@tldraw/assets/imports'
+import { getAssetUrlsByImport } from '@digitalsamba/assets/imports'
 import {
 	Editor,
 	ErrorBoundary,
@@ -11,7 +11,7 @@ import {
 	defaultShapeTools,
 	defaultShapeUtils,
 	setRuntimeOverrides,
-} from '@tldraw/tldraw'
+} from '@digitalsamba/tldraw'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { VscodeMessage } from '../../messages'
 import '../public/index.css'

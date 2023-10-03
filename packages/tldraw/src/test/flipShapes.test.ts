@@ -6,7 +6,7 @@ import {
 	TLShapeId,
 	TLShapePartial,
 	createShapeId,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { TestEditor } from './TestEditor'
 
 let editor: TestEditor

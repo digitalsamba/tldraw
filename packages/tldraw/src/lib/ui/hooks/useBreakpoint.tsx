@@ -1,4 +1,4 @@
-import { useEditor, useValue } from '@tldraw/editor'
+import { useEditor, useValue } from '@digitalsamba/editor'
 import React, { useContext } from 'react'
 import { PORTRAIT_BREAKPOINTS } from '../constants'
 

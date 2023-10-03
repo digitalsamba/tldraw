@@ -1,4 +1,4 @@
-import { TLDrawShape, TLHighlightShape, last } from '@tldraw/editor'
+import { TLDrawShape, TLHighlightShape, last } from '@digitalsamba/editor'
 import { TestEditor } from './TestEditor'
 
 jest.useFakeTimers()

@@ -15,7 +15,7 @@ import {
 	isValidUrl,
 	stopEventPropagation,
 	toDomPrecision,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { getRotatedBoxShadow } from '../../utils/rotated-box-shadow'
 import { truncateStringWithEllipsis } from '../../utils/text'
 import { HyperlinkButton } from '../shared/HyperlinkButton'

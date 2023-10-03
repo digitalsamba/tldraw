@@ -1,5 +1,5 @@
-import { computed, isUninitialized, RESET_VALUE, withDiff } from '@tldraw/state'
-import { IncrementalSetConstructor } from '@tldraw/store'
+import { computed, isUninitialized, RESET_VALUE, withDiff } from '@digitalsamba/state'
+import { IncrementalSetConstructor } from '@digitalsamba/store'
 import {
 	isPageId,
 	isShape,
@@ -8,7 +8,7 @@ import {
 	TLShape,
 	TLShapeId,
 	TLStore,
-} from '@tldraw/tlschema'
+} from '@digitalsamba/tlschema'
 
 /**
  * Get whether a shape is in the current page.

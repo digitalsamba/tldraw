@@ -1,4 +1,4 @@
-import { TLDefaultColorTheme, TLGeoShape, TLShapeId, toDomPrecision } from '@tldraw/editor'
+import { TLDefaultColorTheme, TLGeoShape, TLShapeId, toDomPrecision } from '@digitalsamba/editor'
 import * as React from 'react'
 import {
 	ShapeFill,

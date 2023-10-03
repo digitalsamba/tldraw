@@ -6,7 +6,7 @@ import {
 	setPointerCapture,
 	useEditor,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 import { useMenuIsOpen } from '../../hooks/useMenuIsOpen'

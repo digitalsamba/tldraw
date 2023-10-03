@@ -1,13 +1,13 @@
-import { Signal, transact } from '@tldraw/state'
+import { Signal, transact } from '@digitalsamba/state'
 import {
 	RecordsDiff,
 	SerializedSchema,
 	UnknownRecord,
 	compareSchemas,
 	squashRecordDiffs,
-} from '@tldraw/store'
-import { TLStore } from '@tldraw/tlschema'
-import { assert } from '@tldraw/utils'
+} from '@digitalsamba/store'
+import { TLStore } from '@digitalsamba/tlschema'
+import { assert } from '@digitalsamba/utils'
 import {
 	TAB_ID,
 	TLSessionStateSnapshot,

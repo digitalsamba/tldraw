@@ -1,4 +1,4 @@
-import { defineMigrations } from '@tldraw/store'
+import { defineMigrations } from '@digitalsamba/store'
 import { ShapeProps, TLBaseShape } from './TLBaseShape'
 
 /** @public */

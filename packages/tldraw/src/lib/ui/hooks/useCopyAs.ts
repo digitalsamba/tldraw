@@ -1,4 +1,4 @@
-import { Editor, TLShapeId, useEditor } from '@tldraw/editor'
+import { Editor, TLShapeId, useEditor } from '@digitalsamba/editor'
 import { useCallback } from 'react'
 import { TLCopyType, getSvgAsImage, getSvgAsString } from '../../utils/export'
 import { useToasts } from './useToastsProvider'

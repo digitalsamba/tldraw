@@ -1,4 +1,4 @@
-import { TLDefaultDashStyle } from '@tldraw/tlschema'
+import { TLDefaultDashStyle } from '@digitalsamba/tlschema'
 
 export function getPerfectDashProps(
 	totalLength: number,

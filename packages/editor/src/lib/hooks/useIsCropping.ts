@@ -1,5 +1,5 @@
-import { useValue } from '@tldraw/state'
-import { TLShapeId } from '@tldraw/tlschema'
+import { useValue } from '@digitalsamba/state'
+import { TLShapeId } from '@digitalsamba/tlschema'
 import { useEditor } from './useEditor'
 
 /** @public */

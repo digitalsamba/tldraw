@@ -5,7 +5,7 @@ import {
 	TLEventHandlers,
 	TLFrameShape,
 	TLGeoShape,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { getHitShapeOnCanvasPointerDown } from '../../selection-logic/getHitShapeOnCanvasPointerDown'
 import { updateHoveredId } from '../../selection-logic/updateHoveredId'
 

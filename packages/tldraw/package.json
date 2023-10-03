@@ -1,11 +1,10 @@
 {
-	"name": "@tldraw/tldraw",
+	"name": "@digitalsamba/tldraw",
 	"description": "A tiny little drawing editor.",
 	"version": "2.0.0-alpha.14",
 	"packageManager": "yarn@3.5.0",
 	"author": {
-		"name": "tldraw GB Ltd.",
-		"email": "hello@tldraw.com"
+		"name": "tldraw GB Ltd."
 	},
 	"homepage": "https://tldraw.dev",
 	"license": "Apache-2.0",
@@ -44,6 +43,7 @@
 		"tldraw.css"
 	],
 	"dependencies": {
+		"@digitalsamba/editor": "workspace:*",
 		"@radix-ui/react-alert-dialog": "^1.0.0",
 		"@radix-ui/react-context-menu": "^2.1.1",
 		"@radix-ui/react-dialog": "^1.0.2",
@@ -52,7 +52,6 @@
 		"@radix-ui/react-select": "^1.2.0",
 		"@radix-ui/react-slider": "^1.1.0",
 		"@radix-ui/react-toast": "^1.1.1",
-		"@tldraw/editor": "workspace:*",
 		"canvas-size": "^1.2.6",
 		"classnames": "^2.3.2",
 		"hotkeys-js": "^3.11.2",

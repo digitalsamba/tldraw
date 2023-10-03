@@ -10,7 +10,7 @@ import {
 	noteShapeMigrations,
 	noteShapeProps,
 	toDomPrecision,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { HyperlinkButton } from '../shared/HyperlinkButton'
 import { useDefaultColorTheme } from '../shared/ShapeFill'
 import { TextLabel } from '../shared/TextLabel'

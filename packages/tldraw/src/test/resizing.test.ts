@@ -12,7 +12,7 @@ import {
 	canonicalizeRotation,
 	createShapeId,
 	rotateSelectionHandle,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { TestEditor } from './TestEditor'
 import { getSnapLines } from './getSnapLines'
 import { roundedBox } from './roundedBox'

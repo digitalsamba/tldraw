@@ -1,11 +1,10 @@
 {
-	"name": "@tldraw/store",
+	"name": "@digitalsamba/store",
 	"description": "A tiny little drawing app (store).",
 	"version": "2.0.0-alpha.14",
 	"packageManager": "yarn@3.5.0",
 	"author": {
-		"name": "tldraw GB Ltd.",
-		"email": "hello@tldraw.com"
+		"name": "tldraw GB Ltd."
 	},
 	"homepage": "https://tldraw.dev",
 	"license": "Apache-2.0",
@@ -41,8 +40,8 @@
 		"lint": "yarn run -T tsx ../../scripts/lint.ts"
 	},
 	"dependencies": {
-		"@tldraw/state": "workspace:*",
-		"@tldraw/utils": "workspace:*",
+		"@digitalsamba/state": "workspace:*",
+		"@digitalsamba/utils": "workspace:*",
 		"lodash.isequal": "^4.5.0",
 		"nanoid": "^3.3.6"
 	},

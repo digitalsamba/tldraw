@@ -1,4 +1,4 @@
-import { useEditor, useValue } from '@tldraw/editor'
+import { useEditor, useValue } from '@digitalsamba/editor'
 
 export function useHasLinkShapeSelected() {
 	const editor = useEditor()

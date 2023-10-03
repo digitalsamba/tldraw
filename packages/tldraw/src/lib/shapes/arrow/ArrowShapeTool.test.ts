@@ -1,4 +1,4 @@
-import { Vec2d, createShapeId } from '@tldraw/editor'
+import { Vec2d, createShapeId } from '@digitalsamba/editor'
 import { TestEditor } from '../../../test/TestEditor'
 
 let editor: TestEditor

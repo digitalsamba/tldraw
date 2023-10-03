@@ -15,7 +15,7 @@ import {
 	createShapeId,
 	openWindow,
 	useEditor,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import * as React from 'react'
 import { getEmbedInfo } from '../../utils/embeds'
 import { EditLinkDialog } from '../components/EditLinkDialog'

@@ -1,4 +1,4 @@
-import { Editor } from '@tldraw/editor'
+import { Editor } from '@digitalsamba/editor'
 
 export function registerDefaultSideEffects(editor: Editor) {
 	return [

@@ -15,7 +15,7 @@ import {
 	deepCopy,
 	snapAngle,
 	sortByIndex,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 export class DraggingHandle extends StateNode {
 	static override id = 'dragging_handle'

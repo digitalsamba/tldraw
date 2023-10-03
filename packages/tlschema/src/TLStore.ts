@@ -4,8 +4,8 @@ import {
 	StoreSchema,
 	StoreSchemaOptions,
 	StoreSnapshot,
-} from '@tldraw/store'
-import { annotateError, structuredClone } from '@tldraw/utils'
+} from '@digitalsamba/store'
+import { annotateError, structuredClone } from '@digitalsamba/utils'
 import { CameraRecordType, TLCameraId } from './records/TLCamera'
 import { DocumentRecordType, TLDOCUMENT_ID } from './records/TLDocument'
 import { TLINSTANCE_ID } from './records/TLInstance'

@@ -1,4 +1,4 @@
-import { Editor, GeoShapeGeoStyle, featureFlags, useEditor, useValue } from '@tldraw/editor'
+import { Editor, GeoShapeGeoStyle, featureFlags, useEditor, useValue } from '@digitalsamba/editor'
 import * as React from 'react'
 import { EmbedDialog } from '../components/EmbedDialog'
 import { TLUiIconType } from '../icon-types'

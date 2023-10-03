@@ -1,5 +1,5 @@
-import { isShapeId, TLShape, TLShapePartial } from '@tldraw/tlschema'
-import { structuredClone } from '@tldraw/utils'
+import { isShapeId, TLShape, TLShapePartial } from '@digitalsamba/tlschema'
+import { structuredClone } from '@digitalsamba/utils'
 import { Editor } from '../editor/Editor'
 import { Matrix2d } from '../primitives/Matrix2d'
 import { canonicalizeRotation } from '../primitives/utils'

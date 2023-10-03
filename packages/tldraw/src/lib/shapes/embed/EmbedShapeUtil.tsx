@@ -13,7 +13,7 @@ import {
 	toDomPrecision,
 	useIsEditing,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { useMemo } from 'react'
 import { getEmbedInfo, getEmbedInfoUnsafely } from '../../utils/embeds'
 import { getRotatedBoxShadow } from '../../utils/rotated-box-shadow'

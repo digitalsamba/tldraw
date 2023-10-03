@@ -3,7 +3,7 @@ import {
 	TLSelectionBackgroundComponent,
 	useEditor,
 	useValue,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 
 export const TldrawSelectionBackground: TLSelectionBackgroundComponent = ({ bounds, rotation }) => {
 	const editor = useEditor()

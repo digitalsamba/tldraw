@@ -1,4 +1,4 @@
-import { T } from '@tldraw/validate'
+import { T } from '@digitalsamba/validate'
 import { StyleProp } from './StyleProp'
 
 /** @public */

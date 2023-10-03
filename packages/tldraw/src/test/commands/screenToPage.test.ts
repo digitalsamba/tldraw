@@ -1,4 +1,4 @@
-import { VecLike } from '@tldraw/editor'
+import { VecLike } from '@digitalsamba/editor'
 import { TestEditor } from '../TestEditor'
 
 let editor: TestEditor

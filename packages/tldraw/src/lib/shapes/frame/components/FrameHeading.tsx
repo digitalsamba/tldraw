@@ -6,7 +6,7 @@ import {
 	toDomPrecision,
 	useEditor,
 	useIsEditing,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { useCallback, useEffect, useRef } from 'react'
 import { FrameLabelInput } from './FrameLabelInput'
 

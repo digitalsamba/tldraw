@@ -5,7 +5,7 @@ import {
 	TLShape,
 	createShapeId,
 	debounce,
-} from '@tldraw/editor'
+} from '@digitalsamba/editor'
 import { TestEditor } from './TestEditor'
 import { TL } from './test-jsx'
 

@@ -1,5 +1,5 @@
-import { Tldraw, TLEditorComponents } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { Tldraw, TLEditorComponents } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 
 const components: Partial<TLEditorComponents> = {
 	Brush: function MyBrush({ brush }) {

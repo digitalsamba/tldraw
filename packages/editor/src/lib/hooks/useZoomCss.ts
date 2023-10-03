@@ -1,5 +1,5 @@
-import { EffectScheduler } from '@tldraw/state'
-import { debounce } from '@tldraw/utils'
+import { EffectScheduler } from '@digitalsamba/state'
+import { debounce } from '@digitalsamba/utils'
 import * as React from 'react'
 import { useContainer } from './useContainer'
 import { useEditor } from './useEditor'

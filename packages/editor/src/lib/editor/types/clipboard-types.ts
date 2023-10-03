@@ -1,5 +1,5 @@
-import { SerializedSchema } from '@tldraw/store'
-import { TLAsset, TLShape, TLShapeId } from '@tldraw/tlschema'
+import { SerializedSchema } from '@digitalsamba/store'
+import { TLAsset, TLShape, TLShapeId } from '@digitalsamba/tlschema'
 
 /** @public */
 export interface TLContent {

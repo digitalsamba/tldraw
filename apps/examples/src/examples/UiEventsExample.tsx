@@ -1,5 +1,5 @@
-import { TLUiEventHandler, Tldraw } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { TLUiEventHandler, Tldraw } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 import { useCallback, useState } from 'react'
 
 export default function UiEventsExample() {
