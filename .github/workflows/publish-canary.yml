@@ -9,7 +9,7 @@ jobs:
     name: 'Publish Canary Packages'
     environment: npm deploy
     timeout-minutes: 15
-    runs-on: ubuntu-latest-8-cores
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
