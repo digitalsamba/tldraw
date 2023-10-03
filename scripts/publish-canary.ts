@@ -18,12 +18,9 @@ async function main() {
 	}
 
 	// module was called directly
-	const bumpType = (await exec('npx', ['auto', 'version'])).trim() as
-		| 'major'
-		| 'minor'
-		| 'patch'
-		| ''
+	const bumpType = 'minor' as 'major' | 'minor' | 'patch' | ''
 
+	// (await exec('npx', ['auto', 'version'])).trim()
 	nicelog('bumpType', bumpType)
 	if (bumpType === '') {
 		nicelog('nothing to do')
