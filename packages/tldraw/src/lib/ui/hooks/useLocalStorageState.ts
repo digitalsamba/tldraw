@@ -5,7 +5,13 @@ export function useLocalStorageState<T = any>(key: string, defaultValue: T) {
 	const [state, setState] = React.useState(defaultValue)
 
 	React.useLayoutEffect(() => {
-		const value = localStorage.getItem(key)
+		let value = null
+		try {
+			value = localStorage.getItem(key)
+		} catch {
+			// do nothing
+		}
+
 		if (value) {
 			try {
 				setState(JSON.parse(value))
