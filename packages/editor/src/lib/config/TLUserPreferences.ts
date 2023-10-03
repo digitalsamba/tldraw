@@ -172,11 +172,17 @@ function migrateUserPreferences(userData: unknown) {
 }
 
 function loadUserPreferences(): TLUserPreferences {
-	const userData =
-		typeof window === 'undefined'
-			? null
-			: ((JSON.parse(window?.localStorage?.getItem(USER_DATA_KEY) || 'null') ??
-					null) as null | UserDataSnapshot)
+	let userData = null
+
+	try {
+		userData =
+			typeof window === 'undefined'
+				? null
+				: ((JSON.parse(window?.localStorage?.getItem(USER_DATA_KEY) || 'null') ??
+						null) as null | UserDataSnapshot)
+	} catch (e) {
+		// do nothing;
+	}
 
 	return migrateUserPreferences(userData)
 }
