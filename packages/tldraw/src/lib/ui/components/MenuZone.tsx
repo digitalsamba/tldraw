@@ -9,7 +9,11 @@ import { RedoButton } from './RedoButton'
 import { TrashButton } from './TrashButton'
 import { UndoButton } from './UndoButton'
 
-export const MenuZone = track(function MenuZone() {
+export const MenuZone = track(function MenuZone({
+	renderMenuZoneItems,
+}: {
+	renderMenuZoneItems?: () => React.ReactNode
+}) {
 	const editor = useEditor()
 
 	const breakpoint = useBreakpoint()
@@ -29,6 +33,7 @@ export const MenuZone = track(function MenuZone() {
 						<TrashButton />
 						<DuplicateButton />
 						<ActionsMenu />
+						{renderMenuZoneItems?.()}
 					</>
 				)}
 			</div>

@@ -31,6 +31,33 @@ import { useTranslation } from './hooks/useTranslation/useTranslation'
 export type TldrawUiProps = TldrawUiBaseProps & TldrawUiContextProviderProps
 
 /**
+ * @public
+ */
+export const TldrawUi = React.memo(function TldrawUi({
+	shareZone,
+	topZone,
+	renderDebugMenuItems,
+	children,
+	hideUi,
+	renderMenuZoneItems,
+	...rest
+}: TldrawUiProps) {
+	return (
+		<TldrawUiContextProvider {...rest}>
+			<TldrawUiInner
+				hideUi={hideUi}
+				shareZone={shareZone}
+				topZone={topZone}
+				renderMenuZoneItems={renderMenuZoneItems}
+				renderDebugMenuItems={renderDebugMenuItems}
+			>
+				{children}
+			</TldrawUiInner>
+		</TldrawUiContextProvider>
+	)
+})
+
+/**
  * Base props for the {@link @digitalsamba/tldraw#Tldraw} and {@link TldrawUi} components.
  *
  * @public
@@ -45,6 +72,12 @@ export interface TldrawUiBaseProps {
 	 * Whether to hide the user interface and only display the canvas.
 	 */
 	hideUi?: boolean
+
+	// hide page menu in menu zone
+	hidePageMenu?: boolean
+
+	// custom menu zone elements
+	renderMenuZoneItems?: () => React.ReactNode
 
 	/**
 	 * A component to use for the share zone (will be deprecated)
@@ -62,36 +95,12 @@ export interface TldrawUiBaseProps {
 	renderDebugMenuItems?: () => React.ReactNode
 }
 
-/**
- * @public
- */
-export const TldrawUi = React.memo(function TldrawUi({
-	shareZone,
-	topZone,
-	renderDebugMenuItems,
-	children,
-	hideUi,
-	...rest
-}: TldrawUiProps) {
-	return (
-		<TldrawUiContextProvider {...rest}>
-			<TldrawUiInner
-				hideUi={hideUi}
-				shareZone={shareZone}
-				topZone={topZone}
-				renderDebugMenuItems={renderDebugMenuItems}
-			>
-				{children}
-			</TldrawUiInner>
-		</TldrawUiContextProvider>
-	)
-})
-
 type TldrawUiContentProps = {
 	hideUi?: boolean
 	shareZone?: ReactNode
 	topZone?: ReactNode
 	renderDebugMenuItems?: () => React.ReactNode
+	renderMenuZoneItems?: () => React.ReactNode
 }
 
 const TldrawUiInner = React.memo(function TldrawUiInner({
@@ -115,6 +124,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 	shareZone,
 	topZone,
 	renderDebugMenuItems,
+	renderMenuZoneItems,
 }: TldrawUiContentProps) {
 	const editor = useEditor()
 	const msg = useTranslation()
@@ -149,7 +159,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 					<>
 						<div className="tlui-layout__top">
 							<div className="tlui-layout__top__left">
-								<MenuZone />
+								<MenuZone renderMenuZoneItems={renderMenuZoneItems} />
 								<div className="tlui-helper-buttons">
 									<ExitPenMode />
 									<BackToContent />

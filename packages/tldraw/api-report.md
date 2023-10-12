@@ -1127,8 +1127,12 @@ export const TldrawUi: React_2.NamedExoticComponent<TldrawUiProps>;
 // @public
 export interface TldrawUiBaseProps {
     children?: ReactNode;
+    // (undocumented)
+    hidePageMenu?: boolean;
     hideUi?: boolean;
     renderDebugMenuItems?: () => React_2.ReactNode;
+    // (undocumented)
+    renderMenuZoneItems?: () => React_2.ReactNode;
     shareZone?: ReactNode;
     topZone?: ReactNode;
 }
