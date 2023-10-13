@@ -179,6 +179,7 @@ export const Toolbar = memo(function Toolbar() {
 									<>
 										{/* Last selected (or first) item from the overflow */}
 										<ToolbarButton
+											className="toolbar-overflow-button"
 											key={dropdownFirstItem.toolItem.id}
 											item={dropdownFirstItem.toolItem}
 											title={getTitle(dropdownFirstItem.toolItem)}
@@ -250,14 +251,16 @@ function ToolbarButton({
 	item,
 	title,
 	isSelected,
+	className,
 }: {
 	item: TLUiToolItem
 	title: string
 	isSelected: boolean
+	className?: string
 }) {
 	return (
 		<Button
-			className="tlui-toolbar__tools__button"
+			className={`tlui-toolbar__tools__button ${className || ''}`}
 			data-testid={`tools.${item.id}`}
 			data-tool={item.id}
 			data-geo={item.meta?.geo ?? ''}
