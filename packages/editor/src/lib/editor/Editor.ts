@@ -3025,26 +3025,19 @@ export class Editor extends EventEmitter<TLEventMap> {
 		// If renderingBoundsMargin is set to Infinity, then we won't cull offscreen shapes
 		const isCullingOffScreenShapes = Number.isFinite(this.renderingBoundsMargin)
 
-		let shape: TLShape | undefined
-		let opacity: number
-		let isShapeErasing: boolean
-		let isCulled: boolean
-		let util: ShapeUtil
-		let maskedPageBounds: Box2d | undefined
-
-		const addShapeById = (id: TLShapeId, parentOpacity: number, isAncestorErasing: boolean) => {
-			shape = this.getShape(id)
+		const addShapeById = (id: TLShapeId, opacity: number, isAncestorErasing: boolean) => {
+			const shape = this.getShape(id)
 			if (!shape) return
 
-			opacity = shape.opacity * parentOpacity
-			isShapeErasing = false
-			isCulled = false
-			util = this.getShapeUtil(shape)
-			maskedPageBounds = this.getShapeMaskedPageBounds(id)
+			opacity *= shape.opacity
+			let isCulled = false
+			let isShapeErasing = false
+			const util = this.getShapeUtil(shape)
+			const maskedPageBounds = this.getShapeMaskedPageBounds(id)
 
 			if (useEditorState) {
-				if (!isAncestorErasing && erasingShapeIds.includes(id)) {
-					isShapeErasing = true
+				isShapeErasing = !isAncestorErasing && erasingShapeIds.includes(id)
+				if (isShapeErasing) {
 					opacity *= 0.32
 				}
 
@@ -4223,6 +4216,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	getShapeAtPoint(
 		point: VecLike,
 		opts = {} as {
+			renderingOnly?: boolean
 			margin?: number
 			hitInside?: boolean
 			hitLabels?: boolean
@@ -4230,11 +4224,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 			filter?: (shape: TLShape) => boolean
 		}
 	): TLShape | undefined {
-		const {
-			viewportPageBounds,
-			zoomLevel,
-			currentPageShapesSorted: sortedShapesOnCurrentPage,
-		} = this
+		const { viewportPageBounds, zoomLevel } = this
 		const {
 			filter,
 			margin = 0,
@@ -4249,7 +4239,9 @@ export class Editor extends EventEmitter<TLEventMap> {
 		let inMarginClosestToEdgeDistance = Infinity
 		let inMarginClosestToEdgeHit: TLShape | null = null
 
-		const shapesToCheck = sortedShapesOnCurrentPage.filter((shape) => {
+		const shapesToCheck = (
+			opts.renderingOnly ? this.currentPageRenderingShapesSorted : this.currentPageShapesSorted
+		).filter((shape) => {
 			if (this.isShapeOfType(shape, 'group')) return false
 			const pageMask = this.getShapeMask(shape)
 			if (pageMask && !pointInPolygon(point, pageMask)) return false
@@ -4321,7 +4313,21 @@ export class Editor extends EventEmitter<TLEventMap> {
 
 				distance = minDistance
 			} else {
-				distance = geometry.distanceToPoint(pointInShapeSpace, hitInside)
+				// If the margin is zero and the geometry has a very small width or height,
+				// then check the actual distance. This is to prevent a bug where straight
+				// lines would never pass the broad phase (point-in-bounds) check.
+				if (margin === 0 && (geometry.bounds.w < 1 || geometry.bounds.h < 1)) {
+					distance = geometry.distanceToPoint(pointInShapeSpace, hitInside)
+				} else {
+					// Broad phase
+					if (geometry.bounds.containsPoint(pointInShapeSpace, margin)) {
+						// Narrow phase (actual distance)
+						distance = geometry.distanceToPoint(pointInShapeSpace, hitInside)
+					} else {
+						// Failed the broad phase, geddafugaotta'ere!
+						distance = Infinity
+					}
+				}
 			}
 
 			if (geometry.isClosed) {
@@ -4536,6 +4542,26 @@ export class Editor extends EventEmitter<TLEventMap> {
 		})
 
 		return results
+	}
+
+	/**
+	 * An array containing all of the rendering shapes in the current page, sorted in z-index order (accounting
+	 * for nested shapes): e.g. A, B, BA, BB, C.
+	 *
+	 * @example
+	 * ```ts
+	 * editor.currentPageShapesSorted
+	 * ```
+	 *
+	 * @readonly
+	 *
+	 * @public
+	 */
+	@computed get currentPageRenderingShapesSorted(): TLShape[] {
+		return this.renderingShapes
+			.filter(({ isCulled }) => !isCulled)
+			.sort((a, b) => a.index - b.index)
+			.map(({ shape }) => shape)
 	}
 
 	/**
@@ -4761,16 +4787,25 @@ export class Editor extends EventEmitter<TLEventMap> {
 
 		const invertedParentTransform = parentTransform.clone().invert()
 
-		let id: TLShapeId
-		for (let i = 0; i < ids.length; i++) {
-			id = ids[i]
-			const shape = this.getShape(id)
-			if (!shape) continue
+		const shapesToReparent = compact(ids.map((id) => this.getShape(id)))
+
+		// The user is allowed to re-parent locked shapes. Unintutive? Yeah! But there are plenty of
+		// times when a locked shape's parent is deleted... and we need to put that shape somewhere!
+		const lockedShapes = shapesToReparent.filter((shape) => shape.isLocked)
+
+		if (lockedShapes.length) {
+			// If we have locked shapes, unlock them before we update them
+			this.updateShapes(lockedShapes.map(({ id, type }) => ({ id, type, isLocked: false })))
+		}
+
+		for (let i = 0; i < shapesToReparent.length; i++) {
+			const shape = shapesToReparent[i]
+
 			const pageTransform = this.getShapePageTransform(shape)!
 			if (!pageTransform) continue
-			const pagePoint = pageTransform.point()
 
-			if (!shape || !pagePoint) continue
+			const pagePoint = pageTransform.point()
+			if (!pagePoint) continue
 
 			const newPoint = invertedParentTransform.applyToPoint(pagePoint)
 			const newRotation = pageTransform.rotation() - parentPageRotation
@@ -4783,10 +4818,12 @@ export class Editor extends EventEmitter<TLEventMap> {
 				y: newPoint.y,
 				rotation: newRotation,
 				index: indices[i],
+				isLocked: shape.isLocked, // this will re-lock locked shapes
 			})
 		}
 
 		this.updateShapes(changes)
+
 		return this
 	}
 
@@ -6447,7 +6484,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 				// Make sure that each partial will become the child of either the
 				// page or another shape that exists (or that will exist) in this page.
 
-				const { currentPageShapesSorted: sortedShapesOnCurrentPage } = this
+				const { currentPageShapesSorted } = this
 				partials = partials.map((partial) => {
 					// If the partial does not provide the parentId OR if the provided
 					// parentId is NOT in the store AND NOT among the other shapes being
@@ -6461,7 +6498,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 						partial = { ...partial }
 
 						const parentId =
-							sortedShapesOnCurrentPage.findLast(
+							currentPageShapesSorted.findLast(
 								(parent) =>
 									// parent.type === 'frame'
 									this.getShapeUtil(parent).canReceiveNewChildrenOfType(parent, partial.type) &&

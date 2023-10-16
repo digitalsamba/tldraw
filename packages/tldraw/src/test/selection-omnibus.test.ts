@@ -17,6 +17,7 @@ const ids = {
 
 beforeEach(() => {
 	editor = new TestEditor()
+	editor.setScreenBounds({ w: 3000, h: 3000, x: 0, y: 0 })
 })
 
 it('lists a sorted shapes array correctly', () => {
@@ -205,6 +206,25 @@ describe('when shape is hollow', () => {
 		editor.pointerUp()
 		expect(editor.hoveredShapeId).toBe(null)
 		expect(editor.selectedShapeIds).toEqual([ids.box1])
+	})
+
+	it('missed on the label when the shape is locked', () => {
+		editor.updateShape({ id: ids.box1, type: 'geo', isLocked: true })
+		editor.pointerMove(-100, -100)
+		expect(editor.hoveredShapeId).toBe(null)
+		expect(editor.selectedShapeIds).toEqual([])
+		editor.pointerMove(50, 50)
+		// no hover over label...
+		expect(editor.hoveredShapeId).toBe(null)
+		expect(editor.selectedShapeIds).toEqual([])
+		editor.pointerDown()
+		// will select on pointer up
+		expect(editor.hoveredShapeId).toBe(null)
+		expect(editor.selectedShapeIds).toEqual([])
+		// selects on pointer up
+		editor.pointerUp()
+		expect(editor.hoveredShapeId).toBe(null)
+		expect(editor.selectedShapeIds).toEqual([])
 	})
 
 	it('hits on pointer down over shape margin (inside)', () => {
@@ -459,9 +479,44 @@ describe('when shape is inside of a frame', () => {
 	it('misses on pointer down over shape, misses on pointer up', () => {
 		editor.pointerMove(50, 50)
 		expect(editor.hoveredShapeId).toBe(null)
-		editor.pointerDown() // inside of box1
+		editor.pointerDown() // inside of box1 (which is empty)
 		expect(editor.selectedShapeIds).toEqual([])
-		editor.pointerUp()
+		editor.pointerUp() // does not select because inside of hollow shape
+		expect(editor.selectedShapeIds).toEqual([])
+	})
+
+	it('misses on pointer down over shape, hit on pointer up on the edge', () => {
+		editor.pointerMove(25, 25)
+		editor.pointerDown() // on the edge of box1 (which is empty)
+		expect(editor.selectedShapeIds).toEqual([ids.box1])
+		editor.pointerUp() // does not select because inside of hollow shape
+		expect(editor.selectedShapeIds).toEqual([ids.box1])
+	})
+
+	it('misses on pointer down over shape, misses on pointer up on the edge when locked', () => {
+		editor.updateShape({ id: ids.box1, type: 'geo', isLocked: true })
+		editor.pointerMove(25, 25)
+		editor.pointerDown() // on the edge of box1 (which is empty)
+		expect(editor.selectedShapeIds).toEqual([])
+		editor.pointerUp() // does not select because inside of hollow shape
+		expect(editor.selectedShapeIds).toEqual([])
+	})
+
+	it('misses on pointer down over shape, misses on pointer up when locked', () => {
+		editor.updateShape({ id: ids.box1, type: 'geo', isLocked: true })
+		editor.pointerMove(50, 50)
+		editor.pointerDown() // on the edge of box1 (which is empty)
+		expect(editor.selectedShapeIds).toEqual([])
+		editor.pointerUp() // does not select because inside of hollow shape
+		expect(editor.selectedShapeIds).toEqual([])
+	})
+
+	it('misses on pointer down over shape label, misses on pointer up when locked', () => {
+		editor.updateShape({ id: ids.box1, type: 'geo', isLocked: true })
+		editor.pointerMove(75, 75)
+		editor.pointerDown() // on the edge of box1 (which is empty)
+		expect(editor.selectedShapeIds).toEqual([])
+		editor.pointerUp() // does not select because inside of hollow shape
 		expect(editor.selectedShapeIds).toEqual([])
 	})
 

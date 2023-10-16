@@ -282,9 +282,9 @@ export const CAMERA_SLIDE_FRICTION = 0.09;
 export function canonicalizeRotation(a: number): number;
 
 // @public (undocumented)
-export const Canvas: React_2.MemoExoticComponent<({ className }: {
-    className?: string | undefined;
-}) => JSX.Element>;
+export function Canvas({ className }: {
+    className?: string;
+}): JSX.Element;
 
 // @public (undocumented)
 export class Circle2d extends Geometry2d {
@@ -411,11 +411,12 @@ export const debugFlags: {
     elementRemovalLogging: DebugFlag<boolean>;
     debugSvg: DebugFlag<boolean>;
     throwToBlob: DebugFlag<boolean>;
-    logMessages: DebugFlag<never[]>;
+    logMessages: DebugFlag<any[]>;
     resetConnectionEveryPing: DebugFlag<boolean>;
     debugCursors: DebugFlag<boolean>;
     forceSrgb: DebugFlag<boolean>;
     debugGeometry: DebugFlag<boolean>;
+    hideShapes: DebugFlag<boolean>;
 };
 
 // @internal (undocumented)
@@ -534,7 +535,9 @@ export class Edge2d extends Geometry2d {
     // (undocumented)
     hitTestLineSegment(A: Vec2d, B: Vec2d, _zoom: number): boolean;
     // (undocumented)
-    length: number;
+    get length(): number;
+    // (undocumented)
+    _length?: number;
     // (undocumented)
     midPoint(): Vec2d;
     // (undocumented)
@@ -543,6 +546,8 @@ export class Edge2d extends Geometry2d {
     start: Vec2d;
     // (undocumented)
     u: Vec2d;
+    // (undocumented)
+    ul: number;
 }
 
 // @public (undocumented)
@@ -607,6 +612,7 @@ export class Editor extends EventEmitter<TLEventMap> {
     get currentPage(): TLPage;
     get currentPageBounds(): Box2d | undefined;
     get currentPageId(): TLPageId;
+    get currentPageRenderingShapesSorted(): TLShape[];
     get currentPageShapeIds(): Set<TLShapeId>;
     get currentPageShapes(): TLShape[];
     get currentPageShapesSorted(): TLShape[];
@@ -679,6 +685,7 @@ export class Editor extends EventEmitter<TLEventMap> {
     getShapeAncestors(shape: TLShape | TLShapeId, acc?: TLShape[]): TLShape[];
     getShapeAndDescendantIds(ids: TLShapeId[]): Set<TLShapeId>;
     getShapeAtPoint(point: VecLike, opts?: {
+        renderingOnly?: boolean | undefined;
         margin?: number | undefined;
         hitInside?: boolean | undefined;
         hitLabels?: boolean | undefined;
@@ -955,10 +962,7 @@ export const EVENT_NAME_MAP: Record<Exclude<TLEventName, TLPinchEventName>, keyo
 export function extractSessionStateFromLegacySnapshot(store: Record<string, UnknownRecord>): null | TLSessionStateSnapshot;
 
 // @internal (undocumented)
-export const featureFlags: {
-    peopleMenu: DebugFlag<boolean>;
-    highlighterTool: DebugFlag<boolean>;
-};
+export const featureFlags: Record<string, DebugFlag<boolean>>;
 
 // @public (undocumented)
 export type GapsSnapLine = {
@@ -1012,8 +1016,6 @@ export abstract class Geometry2d {
     abstract nearestPoint(point: Vec2d): Vec2d;
     // (undocumented)
     nearestPointOnLineSegment(A: Vec2d, B: Vec2d): Vec2d;
-    // (undocumented)
-    get outerVertices(): Vec2d[];
     // (undocumented)
     get snapPoints(): Vec2d[];
     // (undocumented)
@@ -1605,6 +1607,7 @@ export abstract class ShapeUtil<Shape extends TLUnknownShape = TLUnknownShape> {
     canCrop: TLShapeUtilFlag<Shape>;
     canDropShapes(shape: Shape, shapes: TLShape[]): boolean;
     canEdit: TLShapeUtilFlag<Shape>;
+    canEditInReadOnly: TLShapeUtilFlag<Shape>;
     canReceiveNewChildrenOfType(shape: Shape, type: TLShape['type']): boolean;
     canResize: TLShapeUtilFlag<Shape>;
     canScroll: TLShapeUtilFlag<Shape>;
@@ -2297,7 +2300,7 @@ export type TLOnHandleChangeHandler<T extends TLShape> = (shape: T, info: {
 }) => TLShapePartial<T> | void;
 
 // @public
-export type TLOnMountHandler = (editor: Editor) => (() => void) | undefined | void;
+export type TLOnMountHandler = (editor: Editor) => (() => undefined | void) | undefined | void;
 
 // @public (undocumented)
 export type TLOnResizeEndHandler<T extends TLShape> = TLEventChangeHandler<T>;

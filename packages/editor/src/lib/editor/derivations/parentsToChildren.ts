@@ -1,6 +1,7 @@
 import { computed, isUninitialized, RESET_VALUE } from '@digitalsamba/state'
 import { RecordsDiff } from '@digitalsamba/store'
 import { isShape, TLParentId, TLRecord, TLShape, TLShapeId, TLStore } from '@digitalsamba/tlschema'
+import { compact } from '@digitalsamba/utils'
 import { sortByIndex } from '../../utils/reordering/reordering'
 
 type Parents2Children = Record<TLParentId, TLShapeId[]>
@@ -102,7 +103,8 @@ export const parentsToChildren = (store: TLStore) => {
 
 			// Sort the arrays that have been marked for sorting
 			for (const arr of toSort) {
-				const shapesInArr = arr.map((id) => store.get(id)!)
+				// It's possible that some of the shapes may be deleted. But in which case would this be so?
+				const shapesInArr = compact(arr.map((id) => store.get(id)))
 				shapesInArr.sort(sortByIndex)
 				arr.splice(0, arr.length, ...shapesInArr.map((shape) => shape.id))
 			}

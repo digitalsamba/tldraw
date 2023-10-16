@@ -86,6 +86,7 @@ export interface TldrawUiBaseProps {
 
 	/**
 	 * A component to use for the top zone (will be deprecated)
+	 * @internal
 	 */
 	topZone?: ReactNode
 
@@ -141,10 +142,11 @@ const TldrawUiContent = React.memo(function TldrawUI({
 
 	return (
 		<ToastProvider>
-			<main
+			<div
 				className={classNames('tlui-layout', {
 					'tlui-layout__mobile': breakpoint < 5,
 				})}
+				data-breakpoint={breakpoint}
 			>
 				{isFocusMode ? (
 					<div className="tlui-layout__top">
@@ -190,7 +192,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 				<Dialogs />
 				<ToastViewport />
 				<FollowingIndicator />
-			</main>
+			</div>
 		</ToastProvider>
 	)
 })

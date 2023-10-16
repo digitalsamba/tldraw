@@ -1,5 +1,10 @@
 import React, { useMemo } from 'react'
-import { preventDefault, releasePointerCapture, setPointerCapture } from '../utils/dom'
+import {
+	preventDefault,
+	releasePointerCapture,
+	setPointerCapture,
+	stopEventPropagation,
+} from '../utils/dom'
 import { getPointerInfo } from '../utils/getPointerInfo'
 import { useEditor } from './useEditor'
 
@@ -12,6 +17,8 @@ export function useCanvasEvents() {
 			let lastX: number, lastY: number
 
 			function onPointerDown(e: React.PointerEvent) {
+				stopEventPropagation(e)
+
 				if ((e as any).isKilled) return
 
 				if (e.button === 2) {
@@ -67,6 +74,20 @@ export function useCanvasEvents() {
 				})
 			}
 
+			function onPointerEnter(e: React.PointerEvent) {
+				if ((e as any).isKilled) return
+				if (editor.instanceState.isPenMode && e.pointerType !== 'pen') return
+				const canHover = e.pointerType === 'mouse' || e.pointerType === 'pen'
+				editor.updateInstanceState({ isHoveringCanvas: canHover ? true : null })
+			}
+
+			function onPointerLeave(e: React.PointerEvent) {
+				if ((e as any).isKilled) return
+				if (editor.instanceState.isPenMode && e.pointerType !== 'pen') return
+				const canHover = e.pointerType === 'mouse' || e.pointerType === 'pen'
+				editor.updateInstanceState({ isHoveringCanvas: canHover ? false : null })
+			}
+
 			function onTouchStart(e: React.TouchEvent) {
 				;(e as any).isKilled = true
 				// todo: investigate whether this effects keyboard shortcuts
@@ -103,14 +124,21 @@ export function useCanvasEvents() {
 				})
 			}
 
+			function onClick(e: React.MouseEvent) {
+				stopEventPropagation(e)
+			}
+
 			return {
 				onPointerDown,
 				onPointerMove,
 				onPointerUp,
+				onPointerEnter,
+				onPointerLeave,
 				onDragOver,
 				onDrop,
 				onTouchStart,
 				onTouchEnd,
+				onClick,
 			}
 		},
 		[editor]

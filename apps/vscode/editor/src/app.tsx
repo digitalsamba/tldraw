@@ -8,8 +8,6 @@ import {
 	ErrorBoundary,
 	TLUiMenuSchema,
 	Tldraw,
-	defaultShapeTools,
-	defaultShapeUtils,
 	setRuntimeOverrides,
 } from '@digitalsamba/tldraw'
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -130,8 +128,6 @@ function TldrawInner({ uri, assetSrc, isDarkMode, fileContents }: TLDrawInnerPro
 
 	return (
 		<Tldraw
-			shapeUtils={defaultShapeUtils}
-			tools={defaultShapeTools}
 			assetUrls={assetUrls}
 			persistenceKey={uri}
 			onMount={handleMount}
