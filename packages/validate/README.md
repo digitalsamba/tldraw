@@ -1,4 +1,4 @@
-## @tldraw/tlvalidate
+## @digitalsamba/tlvalidate
 
 ## License
 

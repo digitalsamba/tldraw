@@ -22,8 +22,8 @@ Learn more at [tldraw.dev](https://tldraw.dev).
 To learn more about using tldraw in your React application, follow our guide [here](https://tldraw.dev/installation) or see the [examples sandbox](https://stackblitz.com/github/tldraw/tldraw/tree/examples?file=src%2F1-basic%2FBasicExample.tsx).
 
 ```tsx
-import { Tldraw } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { Tldraw } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 
 export default function () {
 	return (
@@ -95,7 +95,7 @@ Have questions, comments or feedback? [Join our discord](https://discord.gg/rhsy
 
 ## Distributions
 
-You can find tldraw on npm [here](https://www.npmjs.com/package/@tldraw/tldraw?activeTab=versions).
+You can find tldraw on npm [here](https://www.npmjs.com/package/@digitalsamba/tldraw?activeTab=versions).
 
 At the moment the tldraw package is in alpha. We also ship a canary version which is always up to date with the main branch of this repo.
 

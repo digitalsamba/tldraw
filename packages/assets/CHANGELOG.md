@@ -1,3 +1,23 @@
+# v2.0.0-alpha.17 (Tue Oct 17 2023)
+
+### Release Notes
+
+#### Add offline indicator (also to top zone example) ([#2083](https://github.com/tldraw/tldraw/pull/2083))
+
+- [@digitalsamba/tldraw] add offline indicator to ui components
+
+---
+
+#### 🚀 Enhancement
+
+- Add offline indicator (also to top zone example) [#2083](https://github.com/tldraw/tldraw/pull/2083) ([@steveruizok](https://github.com/steveruizok))
+
+#### Authors: 1
+
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+
+---
+
 # v2.0.0-alpha.15 (Fri Oct 06 2023)
 
 ### Release Notes
@@ -50,7 +70,7 @@ Highlighter pen is here! 🎉🎉🎉
 
 #### Rework the assets package for strategy-specific imports ([#1341](https://github.com/tldraw/tldraw/pull/1341))
 
-- [dev] If you're using the `@tldraw/assets` package, you need to update your code to `import { getAssetUrlsByImport } from '@tldraw/assets/imports'` instead of `import { getBundlerAssetUrls } from '@tldraw/assets`
+- [dev] If you're using the `@digitalsamba/assets` package, you need to update your code to `import { getAssetUrlsByImport } from '@digitalsamba/assets/imports'` instead of `import { getBundlerAssetUrls } from '@digitalsamba/assets`
 
 ---
 

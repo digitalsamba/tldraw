@@ -1,1 +1,1 @@
-# @tldraw/example
+# @digitalsamba/example

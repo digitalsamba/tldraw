@@ -1,4 +1,4 @@
-# @tldraw/tlstore
+# @digitalsamba/tlstore
 
 `tlstore` is a library for creating and managing data.
 
@@ -6,7 +6,7 @@
 
 `tlstore` is used by [tldraw](https://www.tldraw.com) to store its data.
 
-It is designed to be used with `tlstate` (@tldraw/tlstate).
+It is designed to be used with `tlstate` (@digitalsamba/tlstate).
 
 # Usage
 

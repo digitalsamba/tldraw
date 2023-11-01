@@ -1,3 +1,78 @@
+# v2.0.0-alpha.17 (Tue Oct 17 2023)
+
+### Release Notes
+
+#### Firefox, Touch: Fix not being able to open style dropdowns ([#2092](https://github.com/tldraw/tldraw/pull/2092))
+
+- Firefox Mobile: Fixed a bug where you couldn't open some style dropdown options.
+
+#### Add timestamp to file names ([#2096](https://github.com/tldraw/tldraw/pull/2096))
+
+- Add timestamp to exported image file names
+
+#### [fix] Context menu + menus not closing correctly ([#2086](https://github.com/tldraw/tldraw/pull/2086))
+
+- [fix] bug with menus
+
+#### Fix not being able to upload massive images ([#2095](https://github.com/tldraw/tldraw/pull/2095))
+
+- Fixed big images being too big to get added to the canvas.
+
+#### fix cropped image size ([#2097](https://github.com/tldraw/tldraw/pull/2097))
+
+- Fixes a rendering issue where cropped images were sometimes bleeding outside their bounds.
+
+#### Add offline indicator (also to top zone example) ([#2083](https://github.com/tldraw/tldraw/pull/2083))
+
+- [@digitalsamba/tldraw] add offline indicator to ui components
+
+#### [fix] reparenting locked shapes ([#2070](https://github.com/tldraw/tldraw/pull/2070))
+
+- Fix a bug where grouped locked shapes would be deleted when ungrouped.
+
+#### [fix] Don't select locked shapes on pointer up ([#2069](https://github.com/tldraw/tldraw/pull/2069))
+
+- Fix bug where locked shape could be selected by clicking on its label
+
+#### [fix] locked shape of opacity problem with eraser.pointing ([#2073](https://github.com/tldraw/tldraw/pull/2073))
+
+- locked shape of opacity problem with eraser.pointing
+Before/after:
+![A](https://github.com/tldraw/tldraw/assets/59823089/7483506c-72ac-45cc-93aa-f2a794ea8ff0) ![B](https://github.com/tldraw/tldraw/assets/59823089/ef0f988c-83f5-46a2-b891-0a391bca2f87)
+
+---
+
+#### 🚀 Enhancement
+
+- Add offline indicator (also to top zone example) [#2083](https://github.com/tldraw/tldraw/pull/2083) ([@steveruizok](https://github.com/steveruizok))
+- Add data breakpoint to layout css [#2076](https://github.com/tldraw/tldraw/pull/2076) ([@steveruizok](https://github.com/steveruizok))
+- Same first page id for all editors [#2071](https://github.com/tldraw/tldraw/pull/2071) ([@steveruizok](https://github.com/steveruizok))
+
+#### 🐛 Bug Fix
+
+- Firefox, Touch: Fix not being able to open style dropdowns [#2092](https://github.com/tldraw/tldraw/pull/2092) ([@TodePond](https://github.com/TodePond))
+- Add timestamp to file names [#2096](https://github.com/tldraw/tldraw/pull/2096) ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+- move imports [#2099](https://github.com/tldraw/tldraw/pull/2099) ([@SomeHats](https://github.com/SomeHats))
+- [fix] Context menu + menus not closing correctly [#2086](https://github.com/tldraw/tldraw/pull/2086) ([@steveruizok](https://github.com/steveruizok))
+- Fix not being able to upload massive images [#2095](https://github.com/tldraw/tldraw/pull/2095) ([@TodePond](https://github.com/TodePond))
+- fix cropped image size [#2097](https://github.com/tldraw/tldraw/pull/2097) ([@ds300](https://github.com/ds300))
+- Fixed a bug checking translated string keys [#2082](https://github.com/tldraw/tldraw/pull/2082) ([@kewell-tsao](https://github.com/kewell-tsao))
+- [fix] reparenting locked shapes [#2070](https://github.com/tldraw/tldraw/pull/2070) ([@steveruizok](https://github.com/steveruizok))
+- [fix] Don't select locked shapes on pointer up [#2069](https://github.com/tldraw/tldraw/pull/2069) ([@steveruizok](https://github.com/steveruizok))
+- [fix] locked shape of opacity problem with eraser.pointing [#2073](https://github.com/tldraw/tldraw/pull/2073) ([@momenthana](https://github.com/momenthana))
+
+#### Authors: 7
+
+- alex ([@SomeHats](https://github.com/SomeHats))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Hana ([@momenthana](https://github.com/momenthana))
+- Kewell ([@kewell-tsao](https://github.com/kewell-tsao))
+- Lu Wilson ([@TodePond](https://github.com/TodePond))
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+- Taha ([@Taha-Hassan-Git](https://github.com/Taha-Hassan-Git))
+
+---
+
 # v2.0.0-alpha.16 (Wed Oct 11 2023)
 
 ### Release Notes
@@ -211,7 +286,7 @@ After
 
 #### [feature] Asset props ([#1824](https://github.com/tldraw/tldraw/pull/1824))
 
-- [@tldraw/tldraw] add asset props
+- [@digitalsamba/tldraw] add asset props
 
 #### [fix] editing video shapes ([#1821](https://github.com/tldraw/tldraw/pull/1821))
 
@@ -247,7 +322,7 @@ After
 
 #### export `UiEventsProvider` ([#1774](https://github.com/tldraw/tldraw/pull/1774))
 
-- [@tldraw/tldraw] export ui events, so that UI hooks can work without context
+- [@digitalsamba/tldraw] export ui events, so that UI hooks can work without context
 
 #### remove useForceSolid effect for geo / line shapes ([#1769](https://github.com/tldraw/tldraw/pull/1769))
 
@@ -309,12 +384,12 @@ After
 
 #### tldraw zero - package shuffle ([#1710](https://github.com/tldraw/tldraw/pull/1710))
 
-- [@tldraw/editor] lots, wip
-- [@tldraw/ui] gone, merged to tldraw/tldraw
-- [@tldraw/polyfills] gone, merged to tldraw/editor
-- [@tldraw/primitives] gone, merged to tldraw/editor / tldraw/tldraw
-- [@tldraw/indices] gone, merged to tldraw/editor
-- [@tldraw/file-format] gone, merged to tldraw/tldraw
+- [@digitalsamba/editor] lots, wip
+- [@digitalsamba/ui] gone, merged to tldraw/tldraw
+- [@digitalsamba/polyfills] gone, merged to tldraw/editor
+- [@digitalsamba/primitives] gone, merged to tldraw/editor / tldraw/tldraw
+- [@digitalsamba/indices] gone, merged to tldraw/editor
+- [@digitalsamba/file-format] gone, merged to tldraw/tldraw
 
 ---
 
@@ -509,7 +584,7 @@ After
 - readmes [#1195](https://github.com/tldraw/tldraw/pull/1195) ([@steveruizok](https://github.com/steveruizok))
 - [chore] update lazyrepo [#1211](https://github.com/tldraw/tldraw/pull/1211) ([@ds300](https://github.com/ds300))
 - derived presence state [#1204](https://github.com/tldraw/tldraw/pull/1204) ([@ds300](https://github.com/ds300))
-- Fix to not ignore the `userId` option for `<Tldraw/>` component in `@tldraw/tldraw` [#1205](https://github.com/tldraw/tldraw/pull/1205) ([@orangemug](https://github.com/orangemug))
+- Fix to not ignore the `userId` option for `<Tldraw/>` component in `@digitalsamba/tldraw` [#1205](https://github.com/tldraw/tldraw/pull/1205) ([@orangemug](https://github.com/orangemug))
 - [lite] upgrade lazyrepo [#1198](https://github.com/tldraw/tldraw/pull/1198) ([@ds300](https://github.com/ds300))
 - transfer-out: transfer out [#1195](https://github.com/tldraw/tldraw/pull/1195) ([@SomeHats](https://github.com/SomeHats))
 
@@ -561,7 +636,7 @@ After
 
 ---
 
-# @tldraw/ui
+# @digitalsamba/ui
 
 ## 2.0.0-alpha.11
 
@@ -569,10 +644,10 @@ After
 
 - fix some package build scripting
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.11
-  - @tldraw/polyfills@2.0.0-alpha.10
-  - @tldraw/tlsync-client@2.0.0-alpha.11
-  - @tldraw/ui@2.0.0-alpha.11
+  - @digitalsamba/editor@2.0.0-alpha.11
+  - @digitalsamba/polyfills@2.0.0-alpha.10
+  - @digitalsamba/tlsync-client@2.0.0-alpha.11
+  - @digitalsamba/ui@2.0.0-alpha.11
 
 ## 2.0.0-alpha.10
 
@@ -580,10 +655,10 @@ After
 
 - 4b4399b6e: redeploy with yarn to prevent package version issues
 - Updated dependencies [4b4399b6e]
-  - @tldraw/polyfills@2.0.0-alpha.9
-  - @tldraw/tlsync-client@2.0.0-alpha.10
-  - @tldraw/ui@2.0.0-alpha.10
-  - @tldraw/editor@2.0.0-alpha.10
+  - @digitalsamba/polyfills@2.0.0-alpha.9
+  - @digitalsamba/tlsync-client@2.0.0-alpha.10
+  - @digitalsamba/ui@2.0.0-alpha.10
+  - @digitalsamba/editor@2.0.0-alpha.10
 
 ## 2.0.0-alpha.9
 
@@ -591,19 +666,19 @@ After
 
 - Release day!
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.9
-  - @tldraw/polyfills@2.0.0-alpha.8
-  - @tldraw/tlsync-client@2.0.0-alpha.9
-  - @tldraw/ui@2.0.0-alpha.9
+  - @digitalsamba/editor@2.0.0-alpha.9
+  - @digitalsamba/polyfills@2.0.0-alpha.8
+  - @digitalsamba/tlsync-client@2.0.0-alpha.9
+  - @digitalsamba/ui@2.0.0-alpha.9
 
 ## 2.0.0-alpha.8
 
 ### Patch Changes
 
 - Updated dependencies [23dd81cfe]
-  - @tldraw/editor@2.0.0-alpha.8
-  - @tldraw/tlsync-client@2.0.0-alpha.8
-  - @tldraw/ui@2.0.0-alpha.8
+  - @digitalsamba/editor@2.0.0-alpha.8
+  - @digitalsamba/tlsync-client@2.0.0-alpha.8
+  - @digitalsamba/ui@2.0.0-alpha.8
 
 ## 2.0.0-alpha.7
 
@@ -611,9 +686,9 @@ After
 
 - Bug fixes.
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.7
-  - @tldraw/tlsync-client@2.0.0-alpha.7
-  - @tldraw/ui@2.0.0-alpha.7
+  - @digitalsamba/editor@2.0.0-alpha.7
+  - @digitalsamba/tlsync-client@2.0.0-alpha.7
+  - @digitalsamba/ui@2.0.0-alpha.7
 
 ## 2.0.0-alpha.6
 
@@ -621,9 +696,9 @@ After
 
 - Add licenses.
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.6
-  - @tldraw/tlsync-client@2.0.0-alpha.6
-  - @tldraw/ui@2.0.0-alpha.6
+  - @digitalsamba/editor@2.0.0-alpha.6
+  - @digitalsamba/tlsync-client@2.0.0-alpha.6
+  - @digitalsamba/ui@2.0.0-alpha.6
 
 ## 2.0.0-alpha.5
 
@@ -631,9 +706,9 @@ After
 
 - Add CSS files to tldraw/tldraw.
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.5
-  - @tldraw/tlsync-client@2.0.0-alpha.5
-  - @tldraw/ui@2.0.0-alpha.5
+  - @digitalsamba/editor@2.0.0-alpha.5
+  - @digitalsamba/tlsync-client@2.0.0-alpha.5
+  - @digitalsamba/ui@2.0.0-alpha.5
 
 ## 2.0.0-alpha.4
 
@@ -641,9 +716,9 @@ After
 
 - Add children to tldraw/tldraw
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.4
-  - @tldraw/tlsync-client@2.0.0-alpha.4
-  - @tldraw/ui@2.0.0-alpha.4
+  - @digitalsamba/editor@2.0.0-alpha.4
+  - @digitalsamba/tlsync-client@2.0.0-alpha.4
+  - @digitalsamba/ui@2.0.0-alpha.4
 
 ## 2.0.0-alpha.3
 
@@ -651,9 +726,9 @@ After
 
 - Change permissions.
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.3
-  - @tldraw/tlsync-client@2.0.0-alpha.3
-  - @tldraw/ui@2.0.0-alpha.3
+  - @digitalsamba/editor@2.0.0-alpha.3
+  - @digitalsamba/tlsync-client@2.0.0-alpha.3
+  - @digitalsamba/ui@2.0.0-alpha.3
 
 ## 2.0.0-alpha.2
 
@@ -661,9 +736,9 @@ After
 
 - Add tldraw, editor
 - Updated dependencies
-  - @tldraw/editor@2.0.0-alpha.2
-  - @tldraw/tlsync-client@2.0.0-alpha.2
-  - @tldraw/ui@2.0.0-alpha.2
+  - @digitalsamba/editor@2.0.0-alpha.2
+  - @digitalsamba/tlsync-client@2.0.0-alpha.2
+  - @digitalsamba/ui@2.0.0-alpha.2
 
 ## 0.1.0-alpha.11
 
@@ -671,10 +746,10 @@ After
 
 - Fix stale reactors.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.11
-  - @tldraw/tldraw-beta@0.1.0-alpha.11
-  - @tldraw/tlsync-client@0.1.0-alpha.11
-  - @tldraw/utils@0.1.0-alpha.11
+  - @digitalsamba/primitives@0.1.0-alpha.11
+  - @digitalsamba/tldraw-beta@0.1.0-alpha.11
+  - @digitalsamba/tlsync-client@0.1.0-alpha.11
+  - @digitalsamba/utils@0.1.0-alpha.11
 
 ## 0.1.0-alpha.10
 
@@ -682,10 +757,10 @@ After
 
 - Fix type export bug.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.10
-  - @tldraw/tldraw-beta@0.1.0-alpha.10
-  - @tldraw/tlsync-client@0.1.0-alpha.10
-  - @tldraw/utils@0.1.0-alpha.10
+  - @digitalsamba/primitives@0.1.0-alpha.10
+  - @digitalsamba/tldraw-beta@0.1.0-alpha.10
+  - @digitalsamba/tlsync-client@0.1.0-alpha.10
+  - @digitalsamba/utils@0.1.0-alpha.10
 
 ## 0.1.0-alpha.9
 
@@ -693,10 +768,10 @@ After
 
 - Fix import bugs.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.9
-  - @tldraw/tldraw-beta@0.1.0-alpha.9
-  - @tldraw/tlsync-client@0.1.0-alpha.9
-  - @tldraw/utils@0.1.0-alpha.9
+  - @digitalsamba/primitives@0.1.0-alpha.9
+  - @digitalsamba/tldraw-beta@0.1.0-alpha.9
+  - @digitalsamba/tlsync-client@0.1.0-alpha.9
+  - @digitalsamba/utils@0.1.0-alpha.9
 
 ## 0.1.0-alpha.8
 
@@ -704,10 +779,10 @@ After
 
 - Changes validation requirements, exports validation helpers.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.8
-  - @tldraw/tldraw-beta@0.1.0-alpha.8
-  - @tldraw/tlsync-client@0.1.0-alpha.8
-  - @tldraw/utils@0.1.0-alpha.8
+  - @digitalsamba/primitives@0.1.0-alpha.8
+  - @digitalsamba/tldraw-beta@0.1.0-alpha.8
+  - @digitalsamba/tlsync-client@0.1.0-alpha.8
+  - @digitalsamba/utils@0.1.0-alpha.8
 
 ## 0.1.0-alpha.7
 
@@ -715,10 +790,10 @@ After
 
 - - Pre-pre-release update
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.7
-  - @tldraw/tldraw-beta@0.1.0-alpha.7
-  - @tldraw/tlsync-client@0.1.0-alpha.7
-  - @tldraw/utils@0.1.0-alpha.7
+  - @digitalsamba/primitives@0.1.0-alpha.7
+  - @digitalsamba/tldraw-beta@0.1.0-alpha.7
+  - @digitalsamba/tlsync-client@0.1.0-alpha.7
+  - @digitalsamba/utils@0.1.0-alpha.7
 
 ## 0.0.2-alpha.1
 
@@ -726,10 +801,10 @@ After
 
 - Fix error with HMR
 - Updated dependencies
-  - @tldraw/primitives@0.0.2-alpha.1
-  - @tldraw/tldraw-beta@0.0.2-alpha.1
-  - @tldraw/tlsync-client@0.0.2-alpha.1
-  - @tldraw/utils@0.0.2-alpha.1
+  - @digitalsamba/primitives@0.0.2-alpha.1
+  - @digitalsamba/tldraw-beta@0.0.2-alpha.1
+  - @digitalsamba/tlsync-client@0.0.2-alpha.1
+  - @digitalsamba/utils@0.0.2-alpha.1
 
 ## 0.0.2-alpha.0
 
@@ -737,7 +812,7 @@ After
 
 - Initial release
 - Updated dependencies
-  - @tldraw/primitives@0.0.2-alpha.0
-  - @tldraw/tldraw-beta@0.0.2-alpha.0
-  - @tldraw/tlsync-client@0.0.2-alpha.0
-  - @tldraw/utils@0.0.2-alpha.0
+  - @digitalsamba/primitives@0.0.2-alpha.0
+  - @digitalsamba/tldraw-beta@0.0.2-alpha.0
+  - @digitalsamba/tlsync-client@0.0.2-alpha.0
+  - @digitalsamba/utils@0.0.2-alpha.0

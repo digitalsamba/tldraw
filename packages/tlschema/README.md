@@ -1,4 +1,4 @@
-# @tldraw/tlschema
+# @digitalsamba/tlschema
 
 This package houses type definitions, schema migrations, and other type metadata for the tldraw editor's default persisted data.
 

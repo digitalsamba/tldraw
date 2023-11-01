@@ -1,4 +1,4 @@
-# @tldraw/assets
+# @digitalsamba/assets
 
 ## License
 
