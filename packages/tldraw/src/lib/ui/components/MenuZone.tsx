@@ -32,8 +32,8 @@ export const MenuZone = track(function MenuZone({
 						<RedoButton />
 						<TrashButton />
 						<DuplicateButton />
-						<ActionsMenu />
 						{renderMenuZoneItems?.()}
+						<ActionsMenu />
 					</>
 				)}
 			</div>
