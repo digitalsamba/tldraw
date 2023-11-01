@@ -672,7 +672,7 @@ export class Editor extends EventEmitter<TLEventMap> {
     getAssetForExternalContent(info: TLExternalAssetContent): Promise<TLAsset | undefined>;
     getContainer: () => HTMLElement;
     getContentFromCurrentPage(shapes: TLShape[] | TLShapeId[]): TLContent | undefined;
-    getDroppingOverShape(point: VecLike, droppingShapes?: TLShape[]): TLShape | undefined;
+    getDroppingOverShape(point: VecLike, droppingShapes?: TLShape[]): TLUnknownShape | undefined;
     getHighestIndexForParent(parent: TLPage | TLParentId | TLShape): string;
     getInitialMetaForShape(_shape: TLShape): JsonObject;
     getOutermostSelectableShape(shape: TLShape | TLShapeId, filter?: (shape: TLShape) => boolean): TLShape;
@@ -823,6 +823,7 @@ export class Editor extends EventEmitter<TLEventMap> {
         y: number;
         z: number;
     };
+    readonly scribbles: ScribbleManager;
     select(...shapes: TLShape[] | TLShapeId[]): this;
     selectAll(): this;
     get selectedShapeIds(): TLShapeId[];
@@ -2297,6 +2298,7 @@ export type TLOnEditEndHandler<T extends TLShape> = (shape: T) => void;
 export type TLOnHandleChangeHandler<T extends TLShape> = (shape: T, info: {
     handle: TLHandle;
     isPrecise: boolean;
+    initial?: T | undefined;
 }) => TLShapePartial<T> | void;
 
 // @public

@@ -105,6 +105,7 @@ import { deriveShapeIdsInCurrentPage } from './derivations/shapeIdsInCurrentPage
 import { ClickManager } from './managers/ClickManager'
 import { EnvironmentManager } from './managers/EnvironmentManager'
 import { HistoryManager } from './managers/HistoryManager'
+import { ScribbleManager } from './managers/ScribbleManager'
 import { SideEffectManager } from './managers/SideEffectManager'
 import { SnapManager } from './managers/SnapManager'
 import { TextManager } from './managers/TextManager'
@@ -164,15 +165,15 @@ export interface TLEditorOptions {
 	 */
 	getContainer: () => HTMLElement
 	/**
-	 * (optional) A user defined externally to replace the default user.
+	 * A user defined externally to replace the default user.
 	 */
 	user?: TLUser
 	/**
-	 * (optional) The editor's initial active tool (or other state node id).
+	 * The editor's initial active tool (or other state node id).
 	 */
 	initialState?: string
 	/**
-	 * (optional) Whether to infer dark mode from the user's system preferences. Defaults to false.
+	 * Whether to infer dark mode from the user's system preferences. Defaults to false.
 	 */
 	inferDarkMode?: boolean
 }
@@ -263,6 +264,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 		}
 
 		this.environment = new EnvironmentManager(this)
+		this.scribbles = new ScribbleManager(this)
 
 		// Cleanup
 
@@ -678,6 +680,13 @@ export class Editor extends EventEmitter<TLEventMap> {
 	readonly environment: EnvironmentManager
 
 	/**
+	 * A manager for the editor's scribbles.
+	 *
+	 * @public
+	 */
+	readonly scribbles: ScribbleManager
+
+	/**
 	 * The current HTML element containing the editor.
 	 *
 	 * @example
@@ -817,8 +826,8 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param markId - The mark's id, usually the reason for adding the mark.
-	 * @param onUndo - (optional) Whether to stop at the mark when undoing.
-	 * @param onRedo - (optional) Whether to stop at the mark when redoing.
+	 * @param onUndo - Whether to stop at the mark when undoing.
+	 * @param onRedo - Whether to stop at the mark when redoing.
 	 *
 	 * @public
 	 */
@@ -1160,7 +1169,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * Update the instance's state.
 	 *
 	 * @param partial - A partial object to update the instance state with.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -1341,7 +1350,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param partial - The partial of the page state object containing the changes.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -2064,7 +2073,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param point - The new camera position.
-	 * @param animation - (optional) Options for an animation.
+	 * @param animation - Options for an animation.
 	 *
 	 * @public
 	 */
@@ -2101,7 +2110,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param point - The point in the current page space to center on.
-	 * @param animation - (optional) The options for an animation.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2126,7 +2135,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.zoomToContent({ duration: 200 })
 	 * ```
 	 *
-	 * @param opts - (optional) The options for an animation.
+	 * @param opts - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2149,7 +2158,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.zoomToFit({ duration: 200 })
 	 * ```
 	 *
-	 * @param animation - (optional) The options for an animation.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2174,8 +2183,8 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.resetZoom(editor.viewportScreenCenter, { duration: 200 })
 	 * ```
 	 *
-	 * @param point - (optional) The screen point to zoom out on. Defaults to the viewport screen center.
-	 * @param animation - (optional) The options for an animation.
+	 * @param point - The screen point to zoom out on. Defaults to the viewport screen center.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2202,7 +2211,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.zoomIn(editor.inputs.currentScreenPoint, { duration: 120 })
 	 * ```
 	 *
-	 * @param animation - (optional) The options for an animation.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2240,7 +2249,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.zoomOut(editor.inputs.currentScreenPoint, { duration: 120 })
 	 * ```
 	 *
-	 * @param animation - (optional) The options for an animation.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2281,7 +2290,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.zoomToSelection()
 	 * ```
 	 *
-	 * @param animation - (optional) The options for an animation.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2360,7 +2369,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 *
 	 * @param bounds - The bounding box.
 	 * @param targetZoom - The desired zoom level. Defaults to 0.1.
-	 * @param animation - (optional) The options for an animation.
+	 * @param animation - The options for an animation.
 	 *
 	 * @public
 	 */
@@ -2406,7 +2415,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param offset - The offset in the current page space.
-	 * @param animation - (optional) The animation options.
+	 * @param animation - The animation options.
 	 */
 	pan(offset: VecLike, animation?: TLAnimationOptions): this {
 		if (!this.instanceState.canMoveCamera) return this
@@ -2659,7 +2668,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * editor.updateViewportScreenBounds(true)
 	 * ```
 	 *
-	 * @param center - (optional) Whether to preserve the viewport page center as the viewport changes.
+	 * @param center - Whether to preserve the viewport page center as the viewport changes.
 	 *
 	 * @public
 	 */
@@ -3269,7 +3278,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param page - The page (or page id) to set as the current page.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -3344,7 +3353,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param partial - The partial of the shape to update.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -4732,7 +4741,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 *
 	 * @param shapes - The shapes (or shape ids) of the shapes to reparent.
 	 * @param parentId - The id of the new parent shape.
-	 * @param insertIndex - (optional) The index to insert the children.
+	 * @param insertIndex - The index to insert the children.
 	 *
 	 * @public
 	 */
@@ -4938,14 +4947,17 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 */
 	getDroppingOverShape(point: VecLike, droppingShapes: TLShape[] = []) {
 		// starting from the top...
-		return this.currentPageShapesSorted.findLast((shape) => {
+		const { currentPageShapesSorted } = this
+		for (let i = currentPageShapesSorted.length - 1; i >= 0; i--) {
+			const shape = currentPageShapesSorted[i]
+
 			if (
 				// only allow shapes that can receive children
 				!this.getShapeUtil(shape).canDropShapes(shape, droppingShapes) ||
 				// don't allow dropping a shape on itself or one of it's children
 				droppingShapes.find((s) => s.id === shape.id || this.hasAncestor(shape, s.id))
 			) {
-				return false
+				continue
 			}
 
 			// Only allow dropping into the masked page bounds of the shape, e.g. when a frame is
@@ -4957,9 +4969,9 @@ export class Editor extends EventEmitter<TLEventMap> {
 				maskedPageBounds.containsPoint(point) &&
 				this.getShapeGeometry(shape).hitTestPoint(this.getPointInShapeSpace(shape, point), 0, true)
 			) {
-				return true
+				return shape
 			}
-		})
+		}
 	}
 
 	/**
@@ -5043,7 +5055,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 *
 	 * @param shapes - The shapes (or shape ids) to move.
 	 * @param direction - The direction in which to move the shapes.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 */
 	nudgeShapes(
 		shapes: TLShapeId[] | TLShape[],
@@ -5105,7 +5117,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param shapes - The shapes (or shape ids) to duplicate.
-	 * @param offset - (optional) The offset (in pixels) to apply to the duplicated shapes.
+	 * @param offset - The offset (in pixels) to apply to the duplicated shapes.
 	 *
 	 * @public
 	 */
@@ -6484,7 +6496,9 @@ export class Editor extends EventEmitter<TLEventMap> {
 				// Make sure that each partial will become the child of either the
 				// page or another shape that exists (or that will exist) in this page.
 
+				// find last parent id
 				const { currentPageShapesSorted } = this
+
 				partials = partials.map((partial) => {
 					// If the partial does not provide the parentId OR if the provided
 					// parentId is NOT in the store AND NOT among the other shapes being
@@ -6495,44 +6509,55 @@ export class Editor extends EventEmitter<TLEventMap> {
 						!partial.parentId ||
 						!(this.store.has(partial.parentId) || partials.some((p) => p.id === partial.parentId))
 					) {
-						partial = { ...partial }
+						let parentId: TLParentId = this.focusedGroupId
 
-						const parentId =
-							currentPageShapesSorted.findLast(
-								(parent) =>
-									// parent.type === 'frame'
-									this.getShapeUtil(parent).canReceiveNewChildrenOfType(parent, partial.type) &&
-									this.isPointInShape(
-										parent,
-										// If no parent is provided, then we can treat the
-										// shape's provided x/y as being in the page's space.
-										{ x: partial.x ?? 0, y: partial.y ?? 0 },
-										{
-											margin: 0,
-											hitInside: true,
-										}
-									)
-							)?.id ?? this.focusedGroupId
-
-						partial.parentId = parentId
-
-						// If the parent is a shape (rather than a page) then insert the
-						// shapes into the shape's children. Adjust the point and page rotation to be
-						// preserved relative to the parent.
-						if (isShapeId(parentId)) {
-							const point = this.getPointInShapeSpace(this.getShape(parentId)!, {
-								x: partial.x ?? 0,
-								y: partial.y ?? 0,
-							})
-							partial.x = point.x
-							partial.y = point.y
-							partial.rotation =
-								-this.getShapePageTransform(parentId)!.rotation() + (partial.rotation ?? 0)
+						for (let i = currentPageShapesSorted.length - 1; i >= 0; i--) {
+							const parent = currentPageShapesSorted[i]
+							if (
+								// parent.type === 'frame'
+								this.getShapeUtil(parent).canReceiveNewChildrenOfType(parent, partial.type) &&
+								this.isPointInShape(
+									parent,
+									// If no parent is provided, then we can treat the
+									// shape's provided x/y as being in the page's space.
+									{ x: partial.x ?? 0, y: partial.y ?? 0 },
+									{
+										margin: 0,
+										hitInside: true,
+									}
+								)
+							) {
+								parentId = parent.id
+								break
+							}
 						}
 
+						const prevParentId = partial.parentId
+
 						// a shape cannot be it's own parent. This was a rare issue with frames/groups in the syncFuzz tests.
-						if (partial.parentId === partial.id) {
-							partial.parentId = focusedGroupId
+						if (parentId === partial.id) {
+							parentId = focusedGroupId
+						}
+
+						// If the parentid has changed...
+						if (parentId !== prevParentId) {
+							partial = { ...partial }
+
+							partial.parentId = parentId
+
+							// If the parent is a shape (rather than a page) then insert the
+							// shapes into the shape's children. Adjust the point and page rotation to be
+							// preserved relative to the parent.
+							if (isShapeId(parentId)) {
+								const point = this.getPointInShapeSpace(this.getShape(parentId)!, {
+									x: partial.x ?? 0,
+									y: partial.y ?? 0,
+								})
+								partial.x = point.x
+								partial.y = point.y
+								partial.rotation =
+									-this.getShapePageTransform(parentId)!.rotation() + (partial.rotation ?? 0)
+							}
 						}
 					}
 
@@ -6637,7 +6662,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param partial - The shape partial to update.
-	 * @param options - (optional) The animation's options.
+	 * @param options - The animation's options.
 	 *
 	 * @public
 	 */
@@ -6658,7 +6683,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param partials - The shape partials to update.
-	 * @param options - (optional) The animation's options.
+	 * @param options - The animation's options.
 	 *
 	 * @public
 	 */
@@ -6756,7 +6781,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * Create a group containing the provided shapes.
 	 *
 	 * @param shapes - The shapes (or shape ids) to group. Defaults to the selected shapes.
-	 * @param groupId - (optional) The id of the group to create.
+	 * @param groupId - The id of the group to create.
 	 *
 	 * @public
 	 */
@@ -6889,7 +6914,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param partial - The shape partial to update.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -6910,7 +6935,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 * ```
 	 *
 	 * @param partials - The shape partials to update.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -7353,7 +7378,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 *
 	 * @param style - The style to set.
 	 * @param value - The value to set.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */
@@ -7385,7 +7410,7 @@ export class Editor extends EventEmitter<TLEventMap> {
 	 *
 	 * @param style - The style to set.
 	 * @param value - The value to set.
-	 * @param historyOptions - (optional) The history options for the change.
+	 * @param historyOptions - The history options for the change.
 	 *
 	 * @public
 	 */

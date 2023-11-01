@@ -21,9 +21,24 @@ export function useDocumentEvents() {
 			}
 			const mqString = `(resolution: ${window.devicePixelRatio}dppx)`
 			const media = matchMedia(mqString)
-			media.addEventListener('change', updatePixelRatio)
+			// Safari only started supporting `addEventListener('change',...) in version 14
+			// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/change_event
+			const safariCb = (ev: any) => {
+				if (ev.type === 'change') {
+					updatePixelRatio()
+				}
+			}
+			if (media.addEventListener) {
+				media.addEventListener('change', updatePixelRatio)
+			} else if (media.addListener) {
+				media.addListener(safariCb)
+			}
 			remove = () => {
-				media.removeEventListener('change', updatePixelRatio)
+				if (media.removeEventListener) {
+					media.removeEventListener('change', updatePixelRatio)
+				} else if (media.removeListener) {
+					media.removeListener(safariCb)
+				}
 			}
 			editor.updateInstanceState({ devicePixelRatio: window.devicePixelRatio })
 		}
@@ -110,9 +125,13 @@ export function useDocumentEvents() {
 					// returns to the select tool. When the user has selected shapes,
 					// escape de-selects them. Only when the user's selection is empty
 					// should we allow escape to do its normal thing.
+
 					if (editor.editingShape || editor.selectedShapeIds.length > 0) {
 						e.preventDefault()
 					}
+
+					// Don't do anything if we open menus open
+					if (editor.openMenus.length > 0) return
 
 					if (!editor.inputs.keys.has('Escape')) {
 						editor.inputs.keys.add('Escape')

@@ -2,6 +2,7 @@
 
 import * as Dialog from './lib/ui/components/primitives/Dialog'
 import * as DropdownMenu from './lib/ui/components/primitives/DropdownMenu'
+
 // eslint-disable-next-line local/no-export-star
 export * from '@digitalsamba/editor'
 export { Tldraw } from './lib/Tldraw'
@@ -41,6 +42,7 @@ export {
 } from './lib/ui/TldrawUiContextProvider'
 export { setDefaultUiAssetUrls } from './lib/ui/assetUrls'
 export { ContextMenu, type TLUiContextMenuProps } from './lib/ui/components/ContextMenu'
+export { OfflineIndicator } from './lib/ui/components/OfflineIndicator/OfflineIndicator'
 export { Spinner } from './lib/ui/components/Spinner'
 export { Button, type TLUiButtonProps } from './lib/ui/components/primitives/Button'
 export { Icon, type TLUiIconProps } from './lib/ui/components/primitives/Icon'

@@ -8,19 +8,24 @@ export function useMenuIsOpen(id: string, cb?: (isOpen: boolean) => void) {
 	const rIsOpen = useRef(false)
 	const trackEvent = useUiEvents()
 
+	const rLastChange = useRef(0)
+
 	const onOpenChange = useCallback(
 		(isOpen: boolean) => {
+			// prevent multiple calls in quick succession
+			const now = Date.now()
+			if (now - rLastChange.current < 50) return
+			rLastChange.current = now
+
 			rIsOpen.current = isOpen
+
 			editor.batch(() => {
 				if (isOpen) {
 					editor.complete()
 					editor.addOpenMenu(id)
 				} else {
-					editor.deleteOpenMenu(id)
-					editor.openMenus.forEach((menuId) => {
-						if (menuId.startsWith(id)) {
-							editor.deleteOpenMenu(menuId)
-						}
+					editor.updateInstanceState({
+						openMenus: editor.openMenus.filter((m) => !m.startsWith(id)),
 					})
 				}
 
@@ -29,6 +34,8 @@ export function useMenuIsOpen(id: string, cb?: (isOpen: boolean) => void) {
 		},
 		[editor, id, cb]
 	)
+
+	const isOpen = useValue('is menu open', () => editor.openMenus.includes(id), [editor, id])
 
 	useEffect(() => {
 		// When the effect runs, if the menu is open then
@@ -61,8 +68,6 @@ export function useMenuIsOpen(id: string, cb?: (isOpen: boolean) => void) {
 			}
 		}
 	}, [editor, id, trackEvent])
-
-	const isOpen = useValue('is menu open', () => editor.openMenus.includes(id), [editor, id])
 
 	return [isOpen, onOpenChange] as const
 }

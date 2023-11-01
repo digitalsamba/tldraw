@@ -1,10 +1,10 @@
-import { Tldraw } from '@digitalsamba/tldraw'
+import { OfflineIndicator, Tldraw } from '@digitalsamba/tldraw'
 import '@digitalsamba/tldraw/tldraw.css'
 
 export default function Example() {
 	return (
 		<div className="tldraw__editor">
-			<Tldraw shareZone={<CustomShareZone />} />
+			<Tldraw topZone={<OfflineIndicator />} shareZone={<CustomShareZone />} />
 		</div>
 	)
 }

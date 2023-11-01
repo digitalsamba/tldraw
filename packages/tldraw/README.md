@@ -5,7 +5,7 @@
 	</picture>
 </div>
 
-# @tldraw/tldraw
+# @digitalsamba/tldraw
 
 This is the pre-release version of [tldraw](https://github.com/tldraw/tldraw).
 
@@ -13,14 +13,14 @@ See the pre-release docs at [canary.tldraw.dev](https://canary.tldraw.com).
 
 ## Installation
 
-Install the `@tldraw/tldraw` package using `@canary` for the latest canary release. (Or `@alpha` for the latest alpha release.)
+Install the `@digitalsamba/tldraw` package using `@canary` for the latest canary release. (Or `@alpha` for the latest alpha release.)
 
 ```bash
-yarn add @tldraw/tldraw@canary
+yarn add @digitalsamba/tldraw@canary
 # or
-npm install @tldraw/tldraw@canary
+npm install @digitalsamba/tldraw@canary
 # or
-pnpm i @tldraw/tldraw@canary
+pnpm i @digitalsamba/tldraw@canary
 ```
 
 Then start the local development server.
@@ -38,8 +38,8 @@ pnpm dev
 An extremely minimal usage (without our UI) might look like this:
 
 ```tsx
-import { Tldraw } from '@tldraw/tldraw'
-import '@tldraw/tldraw/tldraw.css'
+import { Tldraw } from '@digitalsamba/tldraw'
+import '@digitalsamba/tldraw/tldraw.css'
 
 export default function () {
 	return <Tldraw />

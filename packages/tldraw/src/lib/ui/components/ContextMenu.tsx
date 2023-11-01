@@ -63,6 +63,8 @@ export const ContextMenu = function ContextMenu({ children }: { children: any })
 		[editor]
 	)
 
+	const container = useContainer()
+
 	const [_, handleOpenChange] = useMenuIsOpen('context menu', cb)
 
 	// If every item in the menu is readonly, then we don't want to show the menu
@@ -87,7 +89,9 @@ export const ContextMenu = function ContextMenu({ children }: { children: any })
 			>
 				{children}
 			</_ContextMenu.Trigger>
-			<ContextMenuContent />
+			<_ContextMenu.Portal container={container}>
+				<ContextMenuContent />
+			</_ContextMenu.Portal>
 		</_ContextMenu.Root>
 	)
 }
@@ -140,7 +144,7 @@ function ContextMenuContent() {
 					<_ContextMenu.Sub key={item.id} onOpenChange={handleSubOpenChange}>
 						<_ContextMenu.SubTrigger dir="ltr" disabled={item.disabled} asChild>
 							<Button
-								className="tlui-menu__button"
+								type="menu"
 								label={item.label}
 								data-testid={`menu-item.${item.id}`}
 								icon="chevron-right"
@@ -166,7 +170,7 @@ function ContextMenuContent() {
 					return (
 						<_ContextMenu.CheckboxItem
 							key={id}
-							className="tlui-button tlui-menu__button tlui-menu__checkbox-item"
+							className="tlui-button tlui-button__menu tlui-button__checkbox"
 							dir="ltr"
 							disabled={item.disabled}
 							onSelect={(e) => {
@@ -176,17 +180,12 @@ function ContextMenuContent() {
 							title={labelStr ? labelStr : undefined}
 							checked={item.checked}
 						>
-							<div
-								className="tlui-menu__checkbox-item__check"
-								style={{
-									transformOrigin: '75% center',
-									transform: `scale(${item.checked ? 1 : 0.5})`,
-									opacity: item.checked ? 1 : 0.5,
-								}}
-							>
-								<Icon small icon={item.checked ? 'check' : 'checkbox-empty'} />
-							</div>
-							{labelStr && <span>{labelStr}</span>}
+							<Icon small icon={item.checked ? 'check' : 'checkbox-empty'} />
+							{labelStr && (
+								<span className="tlui-button__label" draggable={false}>
+									{labelStr}
+								</span>
+							)}
 							{kbd && <Kbd>{kbd}</Kbd>}
 						</_ContextMenu.CheckboxItem>
 					)
@@ -195,7 +194,7 @@ function ContextMenuContent() {
 				return (
 					<_ContextMenu.Item key={id} dir="ltr" asChild>
 						<Button
-							className="tlui-menu__button"
+							type="menu"
 							data-testid={`menu-item.${id}`}
 							kbd={kbd}
 							label={labelToUse}

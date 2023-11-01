@@ -9,7 +9,7 @@ import { TLUiTranslation, fetchTranslation } from './translations'
 export interface TLUiTranslationProviderProps {
 	children: any
 	/**
-	 * (optional) A collection of overrides different locales.
+	 * A collection of overrides different locales.
 	 *
 	 * @example
 	 *
@@ -110,4 +110,8 @@ export function useTranslation() {
 		},
 		[translation]
 	)
+}
+
+export function untranslated(string: string) {
+	return string as TLUiTranslationKey
 }

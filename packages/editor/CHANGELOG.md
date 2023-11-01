@@ -1,3 +1,40 @@
+# v2.0.0-alpha.17 (Tue Oct 17 2023)
+
+### Release Notes
+
+#### [fix] Context menu + menus not closing correctly ([#2086](https://github.com/tldraw/tldraw/pull/2086))
+
+- [fix] bug with menus
+
+#### [fix] missing border on group shape when unlocked ([#2075](https://github.com/tldraw/tldraw/pull/2075))
+
+- Fix case where indicator was not shown when unlocking groups
+
+#### [fix] reparenting locked shapes ([#2070](https://github.com/tldraw/tldraw/pull/2070))
+
+- Fix a bug where grouped locked shapes would be deleted when ungrouped.
+
+---
+
+#### 🐛 Bug Fix
+
+- [fix] Context menu + menus not closing correctly [#2086](https://github.com/tldraw/tldraw/pull/2086) ([@steveruizok](https://github.com/steveruizok))
+- [fix] remove findLast calls [#2081](https://github.com/tldraw/tldraw/pull/2081) ([@steveruizok](https://github.com/steveruizok))
+- [fix] missing border on group shape when unlocked [#2075](https://github.com/tldraw/tldraw/pull/2075) ([@steveruizok](https://github.com/steveruizok))
+- Compact children when updating parents to children. [#2072](https://github.com/tldraw/tldraw/pull/2072) ([@steveruizok](https://github.com/steveruizok))
+- [fix] reparenting locked shapes [#2070](https://github.com/tldraw/tldraw/pull/2070) ([@steveruizok](https://github.com/steveruizok))
+
+#### 🔩 Dependency Updates
+
+- bump nanoid [#2078](https://github.com/tldraw/tldraw/pull/2078) ([@ds300](https://github.com/ds300))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Steve Ruiz ([@steveruizok](https://github.com/steveruizok))
+
+---
+
 # v2.0.0-alpha.16 (Wed Oct 11 2023)
 
 ### Release Notes
@@ -142,7 +179,7 @@ Removed a feature to reset the viewport back to a shape that is being edited.
 
 #### [fix] bug with eventemitter3 default export ([#1818](https://github.com/tldraw/tldraw/pull/1818))
 
-- [@tldraw/editor] updates eventemitter3 import to fix issue with Astro builds.
+- [@digitalsamba/editor] updates eventemitter3 import to fix issue with Astro builds.
 
 #### Custom rendering margin / don't cull selected shapes ([#1788](https://github.com/tldraw/tldraw/pull/1788))
 
@@ -208,12 +245,12 @@ Removed a feature to reset the viewport back to a shape that is being edited.
 
 #### tldraw zero - package shuffle ([#1710](https://github.com/tldraw/tldraw/pull/1710))
 
-- [@tldraw/editor] lots, wip
-- [@tldraw/ui] gone, merged to tldraw/tldraw
-- [@tldraw/polyfills] gone, merged to tldraw/editor
-- [@tldraw/primitives] gone, merged to tldraw/editor / tldraw/tldraw
-- [@tldraw/indices] gone, merged to tldraw/editor
-- [@tldraw/file-format] gone, merged to tldraw/tldraw
+- [@digitalsamba/editor] lots, wip
+- [@digitalsamba/ui] gone, merged to tldraw/tldraw
+- [@digitalsamba/polyfills] gone, merged to tldraw/editor
+- [@digitalsamba/primitives] gone, merged to tldraw/editor / tldraw/tldraw
+- [@digitalsamba/indices] gone, merged to tldraw/editor
+- [@digitalsamba/file-format] gone, merged to tldraw/tldraw
 
 #### tweaks for cloud shape ([#1723](https://github.com/tldraw/tldraw/pull/1723))
 
@@ -396,19 +433,19 @@ Removed a feature to reset the viewport back to a shape that is being edited.
 
 #### [fix] comma keyboard shortcuts ([#1675](https://github.com/tldraw/tldraw/pull/1675))
 
-- [@tldraw/editor] Bug fixes on document events.
+- [@digitalsamba/editor] Bug fixes on document events.
 
 #### [improvement] add box sizing border box ([#1674](https://github.com/tldraw/tldraw/pull/1674))
 
-- [@tldraw/editor] Add `box-sizing: border-box` to `tl-container`
+- [@digitalsamba/editor] Add `box-sizing: border-box` to `tl-container`
 
 #### [improvemnet] drop crc, Buffer dependency ([#1673](https://github.com/tldraw/tldraw/pull/1673))
 
-- [@tldraw/editor] Remove peer dependency on buffer.
+- [@digitalsamba/editor] Remove peer dependency on buffer.
 
 #### [improvement] export scribble manager ([#1671](https://github.com/tldraw/tldraw/pull/1671))
 
-- [@tldraw/tldraw] Export `ScribbleManager`
+- [@digitalsamba/tldraw] Export `ScribbleManager`
 
 #### [feature] add `meta` property to records ([#1627](https://github.com/tldraw/tldraw/pull/1627))
 
@@ -625,7 +662,7 @@ n/a
 
 #### Rename tlstore to store ([#1507](https://github.com/tldraw/tldraw/pull/1507))
 
-- Replace @tldraw/tlstore with @tldraw/store
+- Replace @digitalsamba/tlstore with @digitalsamba/store
 
 #### Rename tlvalidate to validate ([#1508](https://github.com/tldraw/tldraw/pull/1508))
 
@@ -721,10 +758,10 @@ Highlighter pen is here! 🎉🎉🎉
 
 - Add a brief release note for your PR here.
 
-#### Create @tldraw/indices package ([#1426](https://github.com/tldraw/tldraw/pull/1426))
+#### Create @digitalsamba/indices package ([#1426](https://github.com/tldraw/tldraw/pull/1426))
 
-- [@tldraw/editor] Remove fractional indices code into `@tldraw/indices`
-- [@tldraw/indices] Create library for fractional indices code
+- [@digitalsamba/editor] Remove fractional indices code into `@digitalsamba/indices`
+- [@digitalsamba/indices] Create library for fractional indices code
 
 #### [improvement] set horizontal position using text alignment ([#1419](https://github.com/tldraw/tldraw/pull/1419))
 
@@ -854,7 +891,7 @@ internal-only change
 - [refactor] remove `createTLSchema` [#1440](https://github.com/tldraw/tldraw/pull/1440) ([@steveruizok](https://github.com/steveruizok))
 - [refactor] Remove `TLShapeDef`, `getShapeUtilByType`. [#1432](https://github.com/tldraw/tldraw/pull/1432) ([@steveruizok](https://github.com/steveruizok) [@SomeHats](https://github.com/SomeHats))
 - [refactor] record migrations [#1430](https://github.com/tldraw/tldraw/pull/1430) ([@steveruizok](https://github.com/steveruizok))
-- Create @tldraw/indices package [#1426](https://github.com/tldraw/tldraw/pull/1426) ([@steveruizok](https://github.com/steveruizok))
+- Create @digitalsamba/indices package [#1426](https://github.com/tldraw/tldraw/pull/1426) ([@steveruizok](https://github.com/steveruizok))
 - Switch to new collaborators component [#1405](https://github.com/tldraw/tldraw/pull/1405) ([@ds300](https://github.com/ds300))
 - remove url state, to private [#1402](https://github.com/tldraw/tldraw/pull/1402) ([@steveruizok](https://github.com/steveruizok))
 - [fix] Don't synchronize isReadOnly [#1396](https://github.com/tldraw/tldraw/pull/1396) ([@ds300](https://github.com/ds300))
@@ -988,7 +1025,7 @@ internal-only change
 
 #### 🔩 Dependency Updates
 
-- Incorporate signia as @tldraw/state [#1620](https://github.com/tldraw/tldraw/pull/1620) ([@steveruizok](https://github.com/steveruizok) [@ds300](https://github.com/ds300))
+- Incorporate signia as @digitalsamba/state [#1620](https://github.com/tldraw/tldraw/pull/1620) ([@steveruizok](https://github.com/steveruizok) [@ds300](https://github.com/ds300))
 - Revert "Update dependencies (#1613)" [#1617](https://github.com/tldraw/tldraw/pull/1617) ([@SomeHats](https://github.com/SomeHats))
 - Update dependencies [#1613](https://github.com/tldraw/tldraw/pull/1613) ([@steveruizok](https://github.com/steveruizok))
 - update use-gesture [#1453](https://github.com/tldraw/tldraw/pull/1453) ([@ds300](https://github.com/ds300))
@@ -1094,7 +1131,7 @@ internal-only change
 
 ---
 
-# @tldraw/tldraw-beta
+# @digitalsamba/tldraw-beta
 
 ## 2.0.0-alpha.11
 
@@ -1102,22 +1139,22 @@ internal-only change
 
 - fix some package build scripting
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.11
-  - @tldraw/tlschema@2.0.0-alpha.11
-  - @tldraw/tlstore@2.0.0-alpha.11
-  - @tldraw/tlvalidate@2.0.0-alpha.10
-  - @tldraw/utils@2.0.0-alpha.10
+  - @digitalsamba/primitives@2.0.0-alpha.11
+  - @digitalsamba/tlschema@2.0.0-alpha.11
+  - @digitalsamba/tlstore@2.0.0-alpha.11
+  - @digitalsamba/tlvalidate@2.0.0-alpha.10
+  - @digitalsamba/utils@2.0.0-alpha.10
 
 ## 2.0.0-alpha.10
 
 ### Patch Changes
 
 - Updated dependencies [4b4399b6e]
-  - @tldraw/primitives@2.0.0-alpha.10
-  - @tldraw/tlschema@2.0.0-alpha.10
-  - @tldraw/tlstore@2.0.0-alpha.10
-  - @tldraw/tlvalidate@2.0.0-alpha.9
-  - @tldraw/utils@2.0.0-alpha.9
+  - @digitalsamba/primitives@2.0.0-alpha.10
+  - @digitalsamba/tlschema@2.0.0-alpha.10
+  - @digitalsamba/tlstore@2.0.0-alpha.10
+  - @digitalsamba/tlvalidate@2.0.0-alpha.9
+  - @digitalsamba/utils@2.0.0-alpha.9
 
 ## 2.0.0-alpha.9
 
@@ -1125,11 +1162,11 @@ internal-only change
 
 - Release day!
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.9
-  - @tldraw/tlschema@2.0.0-alpha.9
-  - @tldraw/tlstore@2.0.0-alpha.9
-  - @tldraw/tlvalidate@2.0.0-alpha.8
-  - @tldraw/utils@2.0.0-alpha.8
+  - @digitalsamba/primitives@2.0.0-alpha.9
+  - @digitalsamba/tlschema@2.0.0-alpha.9
+  - @digitalsamba/tlstore@2.0.0-alpha.9
+  - @digitalsamba/tlvalidate@2.0.0-alpha.8
+  - @digitalsamba/utils@2.0.0-alpha.8
 
 ## 2.0.0-alpha.8
 
@@ -1137,9 +1174,9 @@ internal-only change
 
 - 23dd81cfe: Make signia a peer dependency
 - Updated dependencies [23dd81cfe]
-  - @tldraw/tlstore@2.0.0-alpha.8
-  - @tldraw/tlschema@2.0.0-alpha.8
-  - @tldraw/primitives@2.0.0-alpha.8
+  - @digitalsamba/tlstore@2.0.0-alpha.8
+  - @digitalsamba/tlschema@2.0.0-alpha.8
+  - @digitalsamba/primitives@2.0.0-alpha.8
 
 ## 2.0.0-alpha.7
 
@@ -1147,11 +1184,11 @@ internal-only change
 
 - Bug fixes.
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.7
-  - @tldraw/tlschema@2.0.0-alpha.7
-  - @tldraw/tlstore@2.0.0-alpha.7
-  - @tldraw/tlvalidate@2.0.0-alpha.7
-  - @tldraw/utils@2.0.0-alpha.7
+  - @digitalsamba/primitives@2.0.0-alpha.7
+  - @digitalsamba/tlschema@2.0.0-alpha.7
+  - @digitalsamba/tlstore@2.0.0-alpha.7
+  - @digitalsamba/tlvalidate@2.0.0-alpha.7
+  - @digitalsamba/utils@2.0.0-alpha.7
 
 ## 2.0.0-alpha.6
 
@@ -1159,11 +1196,11 @@ internal-only change
 
 - Add licenses.
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.6
-  - @tldraw/tlschema@2.0.0-alpha.6
-  - @tldraw/tlstore@2.0.0-alpha.6
-  - @tldraw/tlvalidate@2.0.0-alpha.6
-  - @tldraw/utils@2.0.0-alpha.6
+  - @digitalsamba/primitives@2.0.0-alpha.6
+  - @digitalsamba/tlschema@2.0.0-alpha.6
+  - @digitalsamba/tlstore@2.0.0-alpha.6
+  - @digitalsamba/tlvalidate@2.0.0-alpha.6
+  - @digitalsamba/utils@2.0.0-alpha.6
 
 ## 2.0.0-alpha.5
 
@@ -1171,11 +1208,11 @@ internal-only change
 
 - Add CSS files to tldraw/tldraw.
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.5
-  - @tldraw/tlschema@2.0.0-alpha.5
-  - @tldraw/tlstore@2.0.0-alpha.5
-  - @tldraw/tlvalidate@2.0.0-alpha.5
-  - @tldraw/utils@2.0.0-alpha.5
+  - @digitalsamba/primitives@2.0.0-alpha.5
+  - @digitalsamba/tlschema@2.0.0-alpha.5
+  - @digitalsamba/tlstore@2.0.0-alpha.5
+  - @digitalsamba/tlvalidate@2.0.0-alpha.5
+  - @digitalsamba/utils@2.0.0-alpha.5
 
 ## 2.0.0-alpha.4
 
@@ -1183,11 +1220,11 @@ internal-only change
 
 - Add children to tldraw/tldraw
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.4
-  - @tldraw/tlschema@2.0.0-alpha.4
-  - @tldraw/tlstore@2.0.0-alpha.4
-  - @tldraw/tlvalidate@2.0.0-alpha.4
-  - @tldraw/utils@2.0.0-alpha.4
+  - @digitalsamba/primitives@2.0.0-alpha.4
+  - @digitalsamba/tlschema@2.0.0-alpha.4
+  - @digitalsamba/tlstore@2.0.0-alpha.4
+  - @digitalsamba/tlvalidate@2.0.0-alpha.4
+  - @digitalsamba/utils@2.0.0-alpha.4
 
 ## 2.0.0-alpha.3
 
@@ -1195,11 +1232,11 @@ internal-only change
 
 - Change permissions.
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.3
-  - @tldraw/tlschema@2.0.0-alpha.3
-  - @tldraw/tlstore@2.0.0-alpha.3
-  - @tldraw/tlvalidate@2.0.0-alpha.3
-  - @tldraw/utils@2.0.0-alpha.3
+  - @digitalsamba/primitives@2.0.0-alpha.3
+  - @digitalsamba/tlschema@2.0.0-alpha.3
+  - @digitalsamba/tlstore@2.0.0-alpha.3
+  - @digitalsamba/tlvalidate@2.0.0-alpha.3
+  - @digitalsamba/utils@2.0.0-alpha.3
 
 ## 2.0.0-alpha.2
 
@@ -1207,11 +1244,11 @@ internal-only change
 
 - Add tldraw, editor
 - Updated dependencies
-  - @tldraw/primitives@2.0.0-alpha.2
-  - @tldraw/tlschema@2.0.0-alpha.2
-  - @tldraw/tlstore@2.0.0-alpha.2
-  - @tldraw/tlvalidate@2.0.0-alpha.2
-  - @tldraw/utils@2.0.0-alpha.2
+  - @digitalsamba/primitives@2.0.0-alpha.2
+  - @digitalsamba/tlschema@2.0.0-alpha.2
+  - @digitalsamba/tlstore@2.0.0-alpha.2
+  - @digitalsamba/tlvalidate@2.0.0-alpha.2
+  - @digitalsamba/utils@2.0.0-alpha.2
 
 ## 0.1.0-alpha.11
 
@@ -1219,11 +1256,11 @@ internal-only change
 
 - Fix stale reactors.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.11
-  - @tldraw/tlschema@0.1.0-alpha.11
-  - @tldraw/tlstore@0.1.0-alpha.11
-  - @tldraw/tlvalidate@0.1.0-alpha.11
-  - @tldraw/utils@0.1.0-alpha.11
+  - @digitalsamba/primitives@0.1.0-alpha.11
+  - @digitalsamba/tlschema@0.1.0-alpha.11
+  - @digitalsamba/tlstore@0.1.0-alpha.11
+  - @digitalsamba/tlvalidate@0.1.0-alpha.11
+  - @digitalsamba/utils@0.1.0-alpha.11
 
 ## 0.1.0-alpha.10
 
@@ -1231,11 +1268,11 @@ internal-only change
 
 - Fix type export bug.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.10
-  - @tldraw/tlschema@0.1.0-alpha.10
-  - @tldraw/tlstore@0.1.0-alpha.10
-  - @tldraw/tlvalidate@0.1.0-alpha.10
-  - @tldraw/utils@0.1.0-alpha.10
+  - @digitalsamba/primitives@0.1.0-alpha.10
+  - @digitalsamba/tlschema@0.1.0-alpha.10
+  - @digitalsamba/tlstore@0.1.0-alpha.10
+  - @digitalsamba/tlvalidate@0.1.0-alpha.10
+  - @digitalsamba/utils@0.1.0-alpha.10
 
 ## 0.1.0-alpha.9
 
@@ -1243,11 +1280,11 @@ internal-only change
 
 - Fix import bugs.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.9
-  - @tldraw/tlschema@0.1.0-alpha.9
-  - @tldraw/tlstore@0.1.0-alpha.9
-  - @tldraw/tlvalidate@0.1.0-alpha.9
-  - @tldraw/utils@0.1.0-alpha.9
+  - @digitalsamba/primitives@0.1.0-alpha.9
+  - @digitalsamba/tlschema@0.1.0-alpha.9
+  - @digitalsamba/tlstore@0.1.0-alpha.9
+  - @digitalsamba/tlvalidate@0.1.0-alpha.9
+  - @digitalsamba/utils@0.1.0-alpha.9
 
 ## 0.1.0-alpha.8
 
@@ -1255,11 +1292,11 @@ internal-only change
 
 - Changes validation requirements, exports validation helpers.
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.8
-  - @tldraw/tlschema@0.1.0-alpha.8
-  - @tldraw/tlstore@0.1.0-alpha.8
-  - @tldraw/tlvalidate@0.1.0-alpha.8
-  - @tldraw/utils@0.1.0-alpha.8
+  - @digitalsamba/primitives@0.1.0-alpha.8
+  - @digitalsamba/tlschema@0.1.0-alpha.8
+  - @digitalsamba/tlstore@0.1.0-alpha.8
+  - @digitalsamba/tlvalidate@0.1.0-alpha.8
+  - @digitalsamba/utils@0.1.0-alpha.8
 
 ## 0.1.0-alpha.7
 
@@ -1267,11 +1304,11 @@ internal-only change
 
 - - Pre-pre-release update
 - Updated dependencies
-  - @tldraw/primitives@0.1.0-alpha.7
-  - @tldraw/tlschema@0.1.0-alpha.7
-  - @tldraw/tlstore@0.1.0-alpha.7
-  - @tldraw/tlvalidate@0.1.0-alpha.7
-  - @tldraw/utils@0.1.0-alpha.7
+  - @digitalsamba/primitives@0.1.0-alpha.7
+  - @digitalsamba/tlschema@0.1.0-alpha.7
+  - @digitalsamba/tlstore@0.1.0-alpha.7
+  - @digitalsamba/tlvalidate@0.1.0-alpha.7
+  - @digitalsamba/utils@0.1.0-alpha.7
 
 ## 0.0.2-alpha.1
 
@@ -1279,10 +1316,10 @@ internal-only change
 
 - Fix error with HMR
 - Updated dependencies
-  - @tldraw/primitives@0.0.2-alpha.1
-  - @tldraw/tlschema@0.0.2-alpha.1
-  - @tldraw/tlstore@0.0.2-alpha.1
-  - @tldraw/utils@0.0.2-alpha.1
+  - @digitalsamba/primitives@0.0.2-alpha.1
+  - @digitalsamba/tlschema@0.0.2-alpha.1
+  - @digitalsamba/tlstore@0.0.2-alpha.1
+  - @digitalsamba/utils@0.0.2-alpha.1
 
 ## 0.0.2-alpha.0
 
@@ -1290,7 +1327,7 @@ internal-only change
 
 - Initial release
 - Updated dependencies
-  - @tldraw/primitives@0.0.2-alpha.0
-  - @tldraw/tlschema@0.0.2-alpha.0
-  - @tldraw/tlstore@0.0.2-alpha.0
-  - @tldraw/utils@0.0.2-alpha.0
+  - @digitalsamba/primitives@0.0.2-alpha.0
+  - @digitalsamba/tlschema@0.0.2-alpha.0
+  - @digitalsamba/tlstore@0.0.2-alpha.0
+  - @digitalsamba/utils@0.0.2-alpha.0

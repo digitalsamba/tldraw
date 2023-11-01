@@ -134,7 +134,10 @@ export class ImageShapeUtil extends BaseBoxShapeUtil<TLImageShape> {
 						/>
 					</div>
 				)}
-				<HTMLContainer id={shape.id} style={{ overflow: 'hidden' }}>
+				<HTMLContainer
+					id={shape.id}
+					style={{ overflow: 'hidden', width: shape.props.w, height: shape.props.h }}
+				>
 					<div className="tl-image-container" style={containerStyle}>
 						{asset?.props.src ? (
 							<div
@@ -151,10 +154,10 @@ export class ImageShapeUtil extends BaseBoxShapeUtil<TLImageShape> {
 							<div className="tl-image__tg">GIF</div>
 						)}
 					</div>
+					{'url' in shape.props && shape.props.url && (
+						<HyperlinkButton url={shape.props.url} zoomLevel={this.editor.zoomLevel} />
+					)}
 				</HTMLContainer>
-				{'url' in shape.props && shape.props.url && (
-					<HyperlinkButton url={shape.props.url} zoomLevel={this.editor.zoomLevel} />
-				)}
 			</>
 		)
 	}
