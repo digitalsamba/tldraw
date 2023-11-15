@@ -13615,6 +13615,38 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@digitalsamba/tldraw!TldrawUiBaseProps#renderToolbarExtras:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "renderToolbarExtras?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "React.ReactNode",
+                  "canonicalReference": "@types/react!React.ReactNode:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "renderToolbarExtras",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@digitalsamba/tldraw!TldrawUiBaseProps#shareZone:member",
               "docComment": "/**\n * A component to use for the share zone (will be deprecated)\n */\n",
               "excerptTokens": [

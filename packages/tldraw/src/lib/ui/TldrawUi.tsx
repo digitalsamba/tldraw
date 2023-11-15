@@ -37,6 +37,7 @@ export const TldrawUi = React.memo(function TldrawUi({
 	shareZone,
 	topZone,
 	renderDebugMenuItems,
+	renderToolbarExtras,
 	children,
 	hideUi,
 	renderMenuZoneItems,
@@ -49,6 +50,7 @@ export const TldrawUi = React.memo(function TldrawUi({
 				shareZone={shareZone}
 				topZone={topZone}
 				renderMenuZoneItems={renderMenuZoneItems}
+				renderToolbarExtras={renderToolbarExtras}
 				renderDebugMenuItems={renderDebugMenuItems}
 			>
 				{children}
@@ -79,6 +81,8 @@ export interface TldrawUiBaseProps {
 	// custom menu zone elements
 	renderMenuZoneItems?: () => React.ReactNode
 
+	renderToolbarExtras?: () => React.ReactNode
+
 	/**
 	 * A component to use for the share zone (will be deprecated)
 	 */
@@ -102,6 +106,7 @@ type TldrawUiContentProps = {
 	topZone?: ReactNode
 	renderDebugMenuItems?: () => React.ReactNode
 	renderMenuZoneItems?: () => React.ReactNode
+	renderToolbarExtras?: () => React.ReactNode
 }
 
 const TldrawUiInner = React.memo(function TldrawUiInner({
@@ -126,6 +131,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 	topZone,
 	renderDebugMenuItems,
 	renderMenuZoneItems,
+	renderToolbarExtras,
 }: TldrawUiContentProps) {
 	const editor = useEditor()
 	const msg = useTranslation()
@@ -182,7 +188,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 						<div className="tlui-layout__bottom">
 							<div className="tlui-layout__bottom__main">
 								<NavigationZone />
-								<Toolbar />
+								<Toolbar renderToolbarExtras={renderToolbarExtras} />
 								{breakpoint >= 4 && <HelpMenu />}
 							</div>
 							{isDebugMode && <DebugPanel renderDebugMenuItems={renderDebugMenuItems ?? null} />}

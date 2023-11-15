@@ -1238,6 +1238,8 @@ export interface TldrawUiBaseProps {
     renderDebugMenuItems?: () => React_2.ReactNode;
     // (undocumented)
     renderMenuZoneItems?: () => React_2.ReactNode;
+    // (undocumented)
+    renderToolbarExtras?: () => React_2.ReactNode;
     shareZone?: ReactNode;
     // @internal
     topZone?: ReactNode;

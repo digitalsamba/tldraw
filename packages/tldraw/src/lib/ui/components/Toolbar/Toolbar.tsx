@@ -18,7 +18,11 @@ import { kbdStr } from '../primitives/shared'
 import { ToggleToolLockedButton } from './ToggleToolLockedButton'
 
 /** @public */
-export const Toolbar = memo(function Toolbar() {
+export const Toolbar = memo(function Toolbar({
+	renderToolbarExtras,
+}: {
+	renderToolbarExtras?: () => React.ReactNode
+}) {
 	const editor = useEditor()
 	const msg = useTranslation()
 	const breakpoint = useBreakpoint()
@@ -116,6 +120,7 @@ export const Toolbar = memo(function Toolbar() {
 									<RedoButton />
 									<TrashButton />
 									<DuplicateButton />
+									{renderToolbarExtras?.()}
 									<ActionsMenu />
 								</div>
 							)}
