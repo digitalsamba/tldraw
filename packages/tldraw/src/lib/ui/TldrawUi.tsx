@@ -83,6 +83,8 @@ export interface TldrawUiBaseProps {
 
 	renderToolbarExtras?: () => React.ReactNode
 
+	renderLoader?: () => React.ReactNode
+
 	/**
 	 * A component to use for the share zone (will be deprecated)
 	 */

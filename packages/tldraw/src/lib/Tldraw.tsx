@@ -67,6 +67,7 @@ export function Tldraw(
 		acceptedImageMimeTypes,
 		acceptedVideoMimeTypes,
 		onMount,
+		renderLoader,
 		...rest
 	} = props
 
@@ -104,7 +105,7 @@ export function Tldraw(
 	}
 
 	if (!preloadingComplete) {
-		return <LoadingScreen>Loading assets...</LoadingScreen>
+		return renderLoader ? <>{renderLoader()}</> : <LoadingScreen>Loading assets...</LoadingScreen>
 	}
 
 	return (

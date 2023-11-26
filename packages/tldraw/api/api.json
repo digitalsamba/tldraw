@@ -13583,6 +13583,38 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@digitalsamba/tldraw!TldrawUiBaseProps#renderLoader:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "renderLoader?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "React.ReactNode",
+                  "canonicalReference": "@types/react!React.ReactNode:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "renderLoader",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@digitalsamba/tldraw!TldrawUiBaseProps#renderMenuZoneItems:member",
               "docComment": "",
               "excerptTokens": [
