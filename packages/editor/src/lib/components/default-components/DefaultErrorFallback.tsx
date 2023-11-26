@@ -8,7 +8,7 @@ import { refreshPage } from '../../utils/refreshPage'
 import { Canvas } from '../Canvas'
 import { ErrorBoundary } from '../ErrorBoundary'
 
-const BASE_ERROR_URL = 'https://github.com/tldraw/tldraw/issues/new'
+const BASE_ERROR_URL = 'https://github.com/@digitalsamba/tldraw/issues/new'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 function noop() {}
@@ -159,11 +159,7 @@ My browser: ${navigator.userAgent}`
 				) : (
 					<>
 						<h2>Something&apos;s gone wrong.</h2>
-						<p>
-							Sorry, we encountered an error. Please refresh the page to continue. If you keep
-							seeing this error, you can <a href={url.toString()}>create a GitHub issue</a> or{' '}
-							<a href="https://discord.gg/Cq6cPsTfNy">ask for help on Discord</a>.
-						</p>
+						<p>Sorry, we encountered an error. Please refresh the page to continue.</p>
 						{shouldShowError && (
 							<div className="tl-error-boundary__content__error">
 								<pre>
