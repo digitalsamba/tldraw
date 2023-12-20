@@ -5,6 +5,7 @@ import {
 	TLAsset,
 	TLAssetId,
 	TLEmbedShape,
+	TLExternalAssetContent,
 	TLShapePartial,
 	TLTextShape,
 	TLTextShapeProps,
@@ -40,9 +41,14 @@ export function registerDefaultExternalContentHandlers(
 		acceptedVideoMimeTypes,
 	}: TLExternalContentProps
 ) {
-	// files -> asset
-	editor.registerExternalAssetHandler('file', async ({ file }) => {
+	const defaultAssetHandler: (info: TLExternalAssetContent) => Promise<TLAsset> = async (info) => {
 		return await new Promise((resolve, reject) => {
+			if (info.type === 'url') {
+				return reject()
+			}
+
+			const file = info.file
+
 			if (
 				!acceptedImageMimeTypes.includes(file.type) &&
 				!acceptedVideoMimeTypes.includes(file.type)
@@ -115,6 +121,28 @@ export function registerDefaultExternalContentHandlers(
 			}
 
 			reader.readAsDataURL(file)
+		})
+	}
+
+	// files -> assets
+	//
+	editor.registerExternalAssetHandler('file-video', defaultAssetHandler)
+	editor.registerExternalAssetHandler('file-img', defaultAssetHandler)
+
+	editor.registerExternalAssetHandler('file', async ({ file }) => {
+		return await new Promise(async (resolve, reject) => {
+			const isImageType = acceptedImageMimeTypes.includes(file.type)
+
+			const asset = await editor.getAssetForExternalContent({
+				type: isImageType ? 'file-img' : 'file-video',
+				file,
+			})
+
+			if (asset) {
+				resolve(asset)
+			} else {
+				reject()
+			}
 		})
 	})
 

@@ -37615,7 +37615,25 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    type: 'file';\n    file: "
+              "text": "{\n    type: 'file-img';\n    file: "
+            },
+            {
+              "kind": "Reference",
+              "text": "File",
+              "canonicalReference": "!File:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n} | {\n    type: 'file-video';\n    file: "
+            },
+            {
+              "kind": "Reference",
+              "text": "File",
+              "canonicalReference": "!File:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n} | {\n    type: 'file';\n    file: "
             },
             {
               "kind": "Reference",
@@ -37636,7 +37654,7 @@
           "name": "TLExternalAssetContent",
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 4
+            "endIndex": 8
           }
         },
         {

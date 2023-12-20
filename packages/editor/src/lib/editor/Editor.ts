@@ -7478,6 +7478,8 @@ export class Editor extends EventEmitter<TLEventMap> {
 		}[K]
 	} = {
 		file: null,
+		'file-img': null,
+		'file-video': null,
 		url: null,
 	}
 

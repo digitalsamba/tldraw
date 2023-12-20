@@ -53,4 +53,8 @@ export type TLExternalContent = {
 )
 
 /** @public */
-export type TLExternalAssetContent = { type: 'file'; file: File } | { type: 'url'; url: string }
+export type TLExternalAssetContent =
+	| { type: 'file-video'; file: File }
+	| { type: 'file-img'; file: File }
+	| { type: 'file'; file: File }
+	| { type: 'url'; url: string }

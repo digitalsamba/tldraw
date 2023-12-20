@@ -2158,6 +2158,12 @@ export type TLExitEventHandler = (info: any, to: string) => void;
 
 // @public (undocumented)
 export type TLExternalAssetContent = {
+    type: 'file-img';
+    file: File;
+} | {
+    type: 'file-video';
+    file: File;
+} | {
     type: 'file';
     file: File;
 } | {
