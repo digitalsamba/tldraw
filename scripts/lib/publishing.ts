@@ -185,8 +185,8 @@ export async function publish() {
 				}
 			},
 			{
-				delay: 3000,
-				numAttempts: 10,
+				delay: 10000,
+				numAttempts: 50,
 			}
 		)
 	}
