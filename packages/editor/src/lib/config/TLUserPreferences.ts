@@ -190,7 +190,7 @@ function loadUserPreferences(): TLUserPreferences {
 const globalUserPreferences = atom<TLUserPreferences>('globalUserData', loadUserPreferences())
 
 function storeUserPreferences() {
-	if (typeof window !== 'undefined' && window.localStorage) {
+	if (typeof window !== 'undefined') {
 		try {
 			window.localStorage.setItem(
 				USER_DATA_KEY,
