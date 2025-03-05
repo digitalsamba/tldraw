@@ -200,7 +200,7 @@ function storeUserPreferences() {
 				})
 			)
 		} catch {
-			// noop
+			// prevent crashing when localStorage is not awailable
 		}
 	}
 }
