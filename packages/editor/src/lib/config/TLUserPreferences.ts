@@ -191,13 +191,17 @@ const globalUserPreferences = atom<TLUserPreferences>('globalUserData', loadUser
 
 function storeUserPreferences() {
 	if (typeof window !== 'undefined' && window.localStorage) {
-		window.localStorage.setItem(
-			USER_DATA_KEY,
-			JSON.stringify({
-				version: userMigrations.currentVersion,
-				user: globalUserPreferences.value,
-			})
-		)
+		try {
+			window.localStorage.setItem(
+				USER_DATA_KEY,
+				JSON.stringify({
+					version: userMigrations.currentVersion,
+					user: globalUserPreferences.value,
+				})
+			)
+		} catch {
+			// noop
+		}
 	}
 }
 
