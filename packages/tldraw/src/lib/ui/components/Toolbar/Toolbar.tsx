@@ -20,8 +20,10 @@ import { ToggleToolLockedButton } from './ToggleToolLockedButton'
 /** @public */
 export const Toolbar = memo(function Toolbar({
 	renderToolbarExtras,
+	forceMobileStylePanel = false,
 }: {
 	renderToolbarExtras?: () => React.ReactNode
+	forceMobileStylePanel?: boolean
 }) {
 	const editor = useEditor()
 	const msg = useTranslation()
@@ -207,7 +209,7 @@ export const Toolbar = memo(function Toolbar({
 						)}
 					</div>
 				</div>
-				{breakpoint < 5 && !isReadonly && (
+				{(breakpoint < 5 || forceMobileStylePanel) && !isReadonly && (
 					<div className="tlui-toolbar__tools">
 						<MobileStylePanel />
 					</div>

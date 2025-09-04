@@ -1232,6 +1232,7 @@ export const TldrawUi: React_2.NamedExoticComponent<TldrawUiProps>;
 // @public
 export interface TldrawUiBaseProps {
     children?: ReactNode;
+    forceMobileStylePanel?: boolean;
     // (undocumented)
     hidePageMenu?: boolean;
     hideUi?: boolean;
