@@ -13497,6 +13497,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@digitalsamba/tldraw!TldrawUiBaseProps#forceMobileStylePanel:member",
+              "docComment": "/**\n * Forced display style panel as on a mobile device.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "forceMobileStylePanel?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "forceMobileStylePanel",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@digitalsamba/tldraw!TldrawUiBaseProps#hidePageMenu:member",
               "docComment": "",
               "excerptTokens": [

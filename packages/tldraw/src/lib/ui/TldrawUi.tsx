@@ -41,6 +41,7 @@ export const TldrawUi = React.memo(function TldrawUi({
 	children,
 	hideUi,
 	renderMenuZoneItems,
+	forceMobileStylePanel = false,
 	...rest
 }: TldrawUiProps) {
 	return (
@@ -52,6 +53,7 @@ export const TldrawUi = React.memo(function TldrawUi({
 				renderMenuZoneItems={renderMenuZoneItems}
 				renderToolbarExtras={renderToolbarExtras}
 				renderDebugMenuItems={renderDebugMenuItems}
+				forceMobileStylePanel={forceMobileStylePanel}
 			>
 				{children}
 			</TldrawUiInner>
@@ -100,9 +102,14 @@ export interface TldrawUiBaseProps {
 	 * Additional items to add to the debug menu (will be deprecated)
 	 */
 	renderDebugMenuItems?: () => React.ReactNode
+	/**
+	 * Forced display style panel as on a mobile device.
+	 */
+	forceMobileStylePanel?: boolean
 }
 
 type TldrawUiContentProps = {
+	forceMobileStylePanel?: boolean
 	hideUi?: boolean
 	shareZone?: ReactNode
 	topZone?: ReactNode
@@ -134,6 +141,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 	renderDebugMenuItems,
 	renderMenuZoneItems,
 	renderToolbarExtras,
+	forceMobileStylePanel = false,
 }: TldrawUiContentProps) {
 	const editor = useEditor()
 	const msg = useTranslation()
@@ -180,7 +188,7 @@ const TldrawUiContent = React.memo(function TldrawUI({
 							<div className="tlui-layout__top__center">{topZone}</div>
 							<div className="tlui-layout__top__right">
 								{shareZone}
-								{breakpoint >= 5 && !isReadonlyMode && (
+								{breakpoint >= 5 && !isReadonlyMode && !forceMobileStylePanel && (
 									<div className="tlui-style-panel__wrapper">
 										<StylePanel />
 									</div>
@@ -190,7 +198,10 @@ const TldrawUiContent = React.memo(function TldrawUI({
 						<div className="tlui-layout__bottom">
 							<div className="tlui-layout__bottom__main">
 								<NavigationZone />
-								<Toolbar renderToolbarExtras={renderToolbarExtras} />
+								<Toolbar
+									forceMobileStylePanel={forceMobileStylePanel}
+									renderToolbarExtras={renderToolbarExtras}
+								/>
 								{breakpoint >= 4 && <HelpMenu />}
 							</div>
 							{isDebugMode && <DebugPanel renderDebugMenuItems={renderDebugMenuItems ?? null} />}
