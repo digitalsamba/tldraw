@@ -32,6 +32,7 @@
 	--tl-dpr-multiple: 100;
 	--tl-dpr-multiple-px: calc(var(--tl-dpr-multiple) * 1px);
 
+    /* Cursor defaults */
     --tl-cursor-none: none;
     --tl-cursor-default: default;
     --tl-cursor-pointer: pointer;
