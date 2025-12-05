@@ -52,4 +52,5 @@ jobs:
           yarn tsx ./scripts/publish-new.ts
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HUPPY_TOKEN: ${{ secrets.HUPPY_TOKEN }}
