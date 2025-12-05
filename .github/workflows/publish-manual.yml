@@ -5,6 +5,10 @@ name: (Re)Publish public packages manually
 # Package publishing is manually triggered on github actions dashboard
 on: workflow_dispatch
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   deploy:
     name: '(Re)Publish public packages manually'
