@@ -38,4 +38,3 @@ jobs:
         run: yarn tsx ./scripts/publish-canary.ts
         env:
           GH_TOKEN: ${{ github.token }}
-          NPM_TOKEN: ${{ secrets.EMBEDDED_SDK_NPM_TOKEN }}
