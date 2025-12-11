@@ -32,11 +32,15 @@ jobs:
       - name: Show npm version
         run: npm --version
 
+      # Optional: Remove if not needed for Yarn flow
       - name: Update npm (required for trusted publishing)
         run: npm install -g npm@latest
 
       - name: Enable corepack
         run: corepack enable
+
+      - name: Set Yarn to stable version
+        run: yarn set version stable
 
       - name: Install dependencies
         run: yarn
