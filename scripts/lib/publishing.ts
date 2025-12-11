@@ -132,8 +132,9 @@ export async function publish() {
 				let output = ''
 				try {
 					await exec(
-						`npm`,
+						`yarn`,
 						[
+							'npm',
 							'publish',
 							'--tag',
 							String(prereleaseTag),
