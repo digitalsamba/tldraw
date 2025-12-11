@@ -109,13 +109,13 @@ function topologicalSortPackages(packages: Record<string, PackageDetails>) {
 }
 
 export async function publish() {
-//	const npmToken = process.env.NPM_TOKEN
-//	if (!npmToken) {
-//		throw new Error('NPM_TOKEN not set')
-//	}
-//
-//	execSync(`yarn config set npmAuthToken ${npmToken}`, { stdio: 'inherit' })
-//	execSync(`yarn config set npmRegistryServer https://registry.npmjs.org`, { stdio: 'inherit' })
+	const npmToken = process.env.NPM_TOKEN
+	if (!npmToken) {
+		throw new Error('NPM_TOKEN not set')
+	}
+
+	execSync(`yarn config set npmAuthToken ${npmToken}`, { stdio: 'inherit' })
+	execSync(`yarn config set npmRegistryServer https://registry.npmjs.org`, { stdio: 'inherit' })
 
 	const packages = getAllPackageDetails()
 
@@ -216,3 +216,4 @@ function retry(
 		attempt()
 	})
 }
+
