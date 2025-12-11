@@ -86,7 +86,7 @@
 }
 
 .tl-container.tl-old-safari {
-    /* Cursor defaults */
+    /* Cursor for old safari versions older than 17.0.0 */
     --tl-cursor-none: none;
     --tl-cursor-default: default;
     --tl-cursor-pointer: pointer;
