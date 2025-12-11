@@ -158,11 +158,29 @@ export const TldrawEditor = memo(function TldrawEditor({
 		tools: rest.tools ?? EMPTY_TOOLS_ARRAY,
 	}
 
+	const isOldSafari = useMemo(() => {
+		if (typeof navigator === 'undefined') {
+			return false
+		}
+
+		const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+
+		if (!isSafari) {
+			return false
+		}
+
+		const match = navigator.userAgent.match(/version\/(\d+)/i)
+
+		return match ? parseInt(match[1], 10) < 17 : false
+	}, [])
+
 	return (
 		<div
 			ref={rContainer}
 			draggable={false}
-			className={classNames('tl-container tl-theme__light', className)}
+			className={classNames('tl-container tl-theme__light', className, {
+				'tl-old-safari': isOldSafari,
+			})}
 			onPointerDown={stopEventPropagation}
 			tabIndex={-1}
 		>
