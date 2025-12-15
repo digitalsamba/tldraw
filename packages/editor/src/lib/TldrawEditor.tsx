@@ -171,7 +171,7 @@ export const TldrawEditor = memo(function TldrawEditor({
 
 		const match = navigator.userAgent.match(/version\/(\d+)/i)
 
-		return match ? parseInt(match[1], 10) < 17 : false
+		return match ? parseInt(match[1], 10) <= 18 : false
 	}, [])
 
 	return (
