@@ -85,7 +85,7 @@
 	overflow: clip;
 }
 
-.tl-container.tl-old-safari {
+.tl-container.tl-safari {
     /* Cursor for old safari versions older than 17.0.0 */
     --tl-cursor-none: none;
     --tl-cursor-default: default;
