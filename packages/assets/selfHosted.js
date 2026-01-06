@@ -208,6 +208,7 @@ export function getAssetUrls(opts) {
 			main: formatAssetUrl('./translations/main.json', opts),
 			my: formatAssetUrl('./translations/my.json', opts),
 			ne: formatAssetUrl('./translations/ne.json', opts),
+			nl: formatAssetUrl('./translations/nl.json', opts),
 			no: formatAssetUrl('./translations/no.json', opts),
 			pl: formatAssetUrl('./translations/pl.json', opts),
 			'pt-br': formatAssetUrl('./translations/pt-br.json', opts),

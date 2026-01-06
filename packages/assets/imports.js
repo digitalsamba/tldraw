@@ -211,6 +211,7 @@ import translationsLanguages from './translations/languages.json'
 import translationsMain from './translations/main.json'
 import translationsMy from './translations/my.json'
 import translationsNe from './translations/ne.json'
+import translationsNl from './translations/nl.json'
 import translationsNo from './translations/no.json'
 import translationsPl from './translations/pl.json'
 import translationsPtBr from './translations/pt-br.json'
@@ -426,6 +427,7 @@ export function getAssetUrlsByImport(opts) {
 			main: formatAssetUrl(translationsMain, opts),
 			my: formatAssetUrl(translationsMy, opts),
 			ne: formatAssetUrl(translationsNe, opts),
+			nl: formatAssetUrl(translationsNl, opts),
 			no: formatAssetUrl(translationsNo, opts),
 			pl: formatAssetUrl(translationsPl, opts),
 			'pt-br': formatAssetUrl(translationsPtBr, opts),
