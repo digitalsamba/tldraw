@@ -609,6 +609,9 @@ export const LANGUAGES: readonly [{
     readonly locale: "ne";
     readonly label: "नेपाली";
 }, {
+    readonly locale: "nl";
+    readonly label: "Nederlands";
+}, {
     readonly locale: "no";
     readonly label: "Norwegian";
 }, {
