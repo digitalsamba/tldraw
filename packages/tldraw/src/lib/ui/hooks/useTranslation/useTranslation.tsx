@@ -76,7 +76,9 @@ export const TranslationProvider = track(function TranslationProvider({
 			}
 		}
 
-		loadTranslation()
+		loadTranslation().catch(() => {
+			// ignore fetch errors to prevent unhandled rejections
+		})
 
 		return () => {
 			isCancelled = true
