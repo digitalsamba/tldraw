@@ -16,6 +16,7 @@ import {
 	useEditor,
 } from '@digitalsamba/editor'
 import { useCallback, useDebugValue, useLayoutEffect, useMemo, useRef } from 'react'
+import { ExternalContentContext } from './ExternalContentContext'
 import { TldrawHandles } from './canvas/TldrawHandles'
 import { TldrawHoveredShapeIndicator } from './canvas/TldrawHoveredShapeIndicator'
 import { TldrawScribble } from './canvas/TldrawScribble'
@@ -71,6 +72,32 @@ export function Tldraw(
 		...rest
 	} = props
 
+	const resolvedImageMimeTypes = useMemo(
+		() => acceptedImageMimeTypes ?? ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+		[acceptedImageMimeTypes]
+	)
+	const resolvedVideoMimeTypes = useMemo(
+		() => acceptedVideoMimeTypes ?? ['video/mp4', 'video/quicktime'],
+		[acceptedVideoMimeTypes]
+	)
+	const resolvedMaxImageDimension = maxImageDimension ?? 1000
+	const resolvedMaxAssetSize = maxAssetSize ?? 10 * 1024 * 1024
+
+	const contextValue = useMemo(
+		() => ({
+			maxImageDimension: resolvedMaxImageDimension,
+			maxAssetSize: resolvedMaxAssetSize,
+			acceptedImageMimeTypes: resolvedImageMimeTypes,
+			acceptedVideoMimeTypes: resolvedVideoMimeTypes,
+		}),
+		[
+			resolvedMaxImageDimension,
+			resolvedMaxAssetSize,
+			resolvedImageMimeTypes,
+			resolvedVideoMimeTypes,
+		]
+	)
+
 	const withDefaults: TldrawEditorProps = {
 		initialState: 'select',
 		...rest,
@@ -110,29 +137,31 @@ export function Tldraw(
 
 	return (
 		<TldrawEditor {...withDefaults}>
-			<TldrawUi {...withDefaults}>
-				<ContextMenu>
-					<Canvas />
-				</ContextMenu>
-				<InsideOfEditorContext
-					maxImageDimension={maxImageDimension}
-					maxAssetSize={maxAssetSize}
-					acceptedImageMimeTypes={acceptedImageMimeTypes}
-					acceptedVideoMimeTypes={acceptedVideoMimeTypes}
-					onMount={onMount}
-				/>
-				{children}
-			</TldrawUi>
+			<ExternalContentContext.Provider value={contextValue}>
+				<TldrawUi {...withDefaults}>
+					<ContextMenu>
+						<Canvas />
+					</ContextMenu>
+					<InsideOfEditorContext
+						maxImageDimension={resolvedMaxImageDimension}
+						maxAssetSize={resolvedMaxAssetSize}
+						acceptedImageMimeTypes={resolvedImageMimeTypes}
+						acceptedVideoMimeTypes={resolvedVideoMimeTypes}
+						onMount={onMount}
+					/>
+					{children}
+				</TldrawUi>
+			</ExternalContentContext.Provider>
 		</TldrawEditor>
 	)
 }
 
 // We put these hooks into a component here so that they can run inside of the context provided by TldrawEditor.
 function InsideOfEditorContext({
-	maxImageDimension = 1000,
-	maxAssetSize = 10 * 1024 * 1024, // 10mb
-	acceptedImageMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
-	acceptedVideoMimeTypes = ['video/mp4', 'video/quicktime'],
+	maxImageDimension,
+	maxAssetSize,
+	acceptedImageMimeTypes,
+	acceptedVideoMimeTypes,
 	onMount,
 }: Partial<TLExternalContentProps & { onMount: TLOnMountHandler }>) {
 	const editor = useEditor()
@@ -144,10 +173,10 @@ function InsideOfEditorContext({
 
 		// for content handling, first we register the default handlers...
 		registerDefaultExternalContentHandlers(editor, {
-			maxImageDimension,
-			maxAssetSize,
-			acceptedImageMimeTypes,
-			acceptedVideoMimeTypes,
+			maxImageDimension: maxImageDimension!,
+			maxAssetSize: maxAssetSize!,
+			acceptedImageMimeTypes: acceptedImageMimeTypes!,
+			acceptedVideoMimeTypes: acceptedVideoMimeTypes!,
 		})
 
 		// ...then we run the onMount prop, which may override the above
