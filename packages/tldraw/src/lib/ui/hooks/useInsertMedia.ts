@@ -1,14 +1,26 @@
 import { useEditor } from '@digitalsamba/editor'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useContext, useEffect, useRef } from 'react'
+import { ExternalContentContext } from '../../ExternalContentContext'
 
 export function useInsertMedia() {
 	const editor = useEditor()
+	const externalContentProps = useContext(ExternalContentContext)
 	const inputRef = useRef<HTMLInputElement>()
 
 	useEffect(() => {
 		const input = window.document.createElement('input')
 		input.type = 'file'
-		input.accept = 'image/jpeg,image/png,image/gif,image/svg+xml,video/mp4,video/quicktime'
+
+		// Build accept string from context props, defaulting to images only
+		const acceptedImageMimeTypes = externalContentProps?.acceptedImageMimeTypes || [
+			'image/jpeg',
+			'image/png',
+			'image/gif',
+			'image/svg+xml',
+		]
+		const acceptedVideoMimeTypes = externalContentProps?.acceptedVideoMimeTypes || []
+
+		input.accept = [...acceptedImageMimeTypes, ...acceptedVideoMimeTypes].join(',')
 		input.multiple = true
 		inputRef.current = input
 		async function onchange(e: Event) {
@@ -27,7 +39,7 @@ export function useInsertMedia() {
 			inputRef.current = undefined
 			input.removeEventListener('change', onchange)
 		}
-	}, [editor])
+	}, [editor, externalContentProps])
 
 	return useCallback(() => {
 		inputRef.current?.click()
