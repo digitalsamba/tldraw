@@ -11,7 +11,7 @@ export function useInsertMedia() {
 		const input = window.document.createElement('input')
 		input.type = 'file'
 
-		// Build accept string from context props, defaulting to images only
+		// Build the file input's accept list from context; fall back when no Provider is in the tree
 		const acceptedImageMimeTypes = externalContentProps?.acceptedImageMimeTypes || [
 			'image/jpeg',
 			'image/png',

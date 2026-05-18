@@ -72,15 +72,31 @@ export function Tldraw(
 		...rest
 	} = props
 
-	const resolvedImageMimeTypes = acceptedImageMimeTypes ?? [
-		'image/jpeg',
-		'image/png',
-		'image/gif',
-		'image/svg+xml',
-	]
-	const resolvedVideoMimeTypes = acceptedVideoMimeTypes ?? ['video/mp4', 'video/quicktime']
+	const resolvedImageMimeTypes = useMemo(
+		() => acceptedImageMimeTypes ?? ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+		[acceptedImageMimeTypes]
+	)
+	const resolvedVideoMimeTypes = useMemo(
+		() => acceptedVideoMimeTypes ?? ['video/mp4', 'video/quicktime'],
+		[acceptedVideoMimeTypes]
+	)
 	const resolvedMaxImageDimension = maxImageDimension ?? 1000
 	const resolvedMaxAssetSize = maxAssetSize ?? 10 * 1024 * 1024
+
+	const contextValue = useMemo(
+		() => ({
+			maxImageDimension: resolvedMaxImageDimension,
+			maxAssetSize: resolvedMaxAssetSize,
+			acceptedImageMimeTypes: resolvedImageMimeTypes,
+			acceptedVideoMimeTypes: resolvedVideoMimeTypes,
+		}),
+		[
+			resolvedMaxImageDimension,
+			resolvedMaxAssetSize,
+			resolvedImageMimeTypes,
+			resolvedVideoMimeTypes,
+		]
+	)
 
 	const withDefaults: TldrawEditorProps = {
 		initialState: 'select',
@@ -121,14 +137,7 @@ export function Tldraw(
 
 	return (
 		<TldrawEditor {...withDefaults}>
-			<ExternalContentContext.Provider
-				value={{
-					maxImageDimension: resolvedMaxImageDimension!,
-					maxAssetSize: resolvedMaxAssetSize!,
-					acceptedImageMimeTypes: resolvedImageMimeTypes!,
-					acceptedVideoMimeTypes: resolvedVideoMimeTypes!,
-				}}
-			>
+			<ExternalContentContext.Provider value={contextValue}>
 				<TldrawUi {...withDefaults}>
 					<ContextMenu>
 						<Canvas />
