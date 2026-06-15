@@ -16,6 +16,7 @@ import {
 	useEditor,
 } from '@digitalsamba/editor'
 import { useCallback, useDebugValue, useLayoutEffect, useMemo, useRef } from 'react'
+import { FirefoxEditingScaleContext } from './FirefoxEditingScaleContext'
 import { TldrawHandles } from './canvas/TldrawHandles'
 import { TldrawHoveredShapeIndicator } from './canvas/TldrawHoveredShapeIndicator'
 import { TldrawScribble } from './canvas/TldrawScribble'
@@ -58,6 +59,11 @@ export function Tldraw(
 			 * Urls for the editor to find fonts and other assets.
 			 */
 			assetUrls?: RecursivePartial<TLEditorAssetUrls>
+			/**
+			 * Opt into the Firefox-only fix that keeps the text-editing caret visible
+			 * when the canvas is zoomed (Mozilla bug 226301). Off by default.
+			 */
+			enableFirefoxEditingScale?: boolean
 		}
 ) {
 	const {
@@ -68,6 +74,7 @@ export function Tldraw(
 		acceptedVideoMimeTypes,
 		onMount,
 		renderLoader,
+		enableFirefoxEditingScale,
 		...rest
 	} = props
 
@@ -111,9 +118,11 @@ export function Tldraw(
 	return (
 		<TldrawEditor {...withDefaults}>
 			<TldrawUi {...withDefaults}>
-				<ContextMenu>
-					<Canvas />
-				</ContextMenu>
+				<FirefoxEditingScaleContext.Provider value={!!enableFirefoxEditingScale}>
+					<ContextMenu>
+						<Canvas />
+					</ContextMenu>
+				</FirefoxEditingScaleContext.Provider>
 				<InsideOfEditorContext
 					maxImageDimension={maxImageDimension}
 					maxAssetSize={maxAssetSize}
