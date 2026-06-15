@@ -13275,7 +13275,7 @@
             },
             {
               "kind": "Content",
-              "text": ">;\n}"
+              "text": ">;\n    enableFirefoxEditingScale?: boolean;\n}"
             },
             {
               "kind": "Content",
