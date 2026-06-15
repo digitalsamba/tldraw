@@ -22,6 +22,7 @@ export const LANGUAGES = [
 	{ locale: 'hu', label: 'Magyar' },
 	{ locale: 'my', label: 'မြန်မာစာ' },
 	{ locale: 'ne', label: 'नेपाली' },
+	{ locale: 'nl', label: 'Nederlands' },
 	{ locale: 'no', label: 'Norwegian' },
 	{ locale: 'pl', label: 'Polski' },
 	{ locale: 'pt-br', label: 'Português - Brasil' },

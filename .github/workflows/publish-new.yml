@@ -4,6 +4,10 @@ name: Publish new version of public packages
 # Package publishing is manually triggered on github actions dashboard
 on: workflow_dispatch
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   deploy:
     name: 'Publish new version of public packages'

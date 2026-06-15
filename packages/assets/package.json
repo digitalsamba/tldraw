@@ -9,10 +9,10 @@
 	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tldraw/tldraw"
+		"url": "https://github.com/digitalsamba/tldraw"
 	},
 	"bugs": {
-		"url": "https://github.com/tldraw/tldraw/issues"
+		"url": "https://github.com/digitalsamba/tldraw/issues"
 	},
 	"keywords": [
 		"tldraw",

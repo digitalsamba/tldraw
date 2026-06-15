@@ -198,6 +198,7 @@ export type AssetUrls = {
 		main: string
 		my: string
 		ne: string
+		nl: string
 		no: string
 		pl: string
 		'pt-br': string
