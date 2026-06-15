@@ -1211,6 +1211,7 @@ export function Tldraw(props: TldrawEditorBaseProps & ({
     snapshot?: StoreSnapshot<TLRecord>;
 }) & TldrawUiProps & Partial<TLExternalContentProps> & {
     assetUrls?: RecursivePartial<TLEditorAssetUrls>;
+    enableFirefoxEditingScale?: boolean;
 }): JSX.Element;
 
 // @public (undocumented)

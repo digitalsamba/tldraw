@@ -24,6 +24,7 @@ import { FONT_FAMILIES, FONT_SIZES, TEXT_PROPS } from '../shared/default-shape-c
 import { getFontDefForExport } from '../shared/defaultStyleDefs'
 import { resizeScaled } from '../shared/resizeScaled'
 import { useEditableText } from '../shared/useEditableText'
+import { useFirefoxEditingScale } from '../shared/useFirefoxEditingScale'
 
 const sizeCache = new WeakMapCache<TLTextShape['props'], { height: number; width: number }>()
 
@@ -86,6 +87,15 @@ export class TextShapeUtil extends ShapeUtil<TLTextShape> {
 			handleDoubleClick,
 		} = useEditableText(id, type, text)
 
+		// Firefox-only: render the editing textarea at device-scale 1 to keep the
+		// caret visible when the canvas is zoomed (Mozilla bug 226301).
+		const editingScaleStyle = useFirefoxEditingScale(
+			isEditing,
+			FONT_SIZES[shape.props.size],
+			FONT_SIZES[shape.props.size] * TEXT_PROPS.lineHeight,
+			0
+		)
+
 		return (
 			<HTMLContainer id={shape.id}>
 				<div
@@ -125,6 +135,7 @@ export class TextShapeUtil extends ShapeUtil<TLTextShape> {
 							dir="ltr"
 							datatype="wysiwyg"
 							defaultValue={text}
+							style={editingScaleStyle}
 							onFocus={handleFocus}
 							onChange={handleChange}
 							onKeyDown={handleKeyDown}

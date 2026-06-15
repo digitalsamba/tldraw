@@ -15,6 +15,7 @@ import { TextHelpers } from './TextHelpers'
 import { LABEL_FONT_SIZES, TEXT_PROPS } from './default-shape-constants'
 import { isLegacyAlign } from './legacyProps'
 import { useEditableText } from './useEditableText'
+import { useFirefoxEditingScale } from './useFirefoxEditingScale'
 
 export const TextLabel = React.memo(function TextLabel<
 	T extends Extract<TLShape, { props: { text: string } }>
@@ -59,6 +60,15 @@ export const TextLabel = React.memo(function TextLabel<
 
 	const legacyAlign = isLegacyAlign(align)
 	const theme = useDefaultColorTheme()
+
+	// Firefox-only: render the editing textarea at device-scale 1 to keep the
+	// caret visible when the canvas is zoomed (Mozilla bug 226301).
+	const editingScaleStyle = useFirefoxEditingScale(
+		isEditing,
+		LABEL_FONT_SIZES[size],
+		LABEL_FONT_SIZES[size] * TEXT_PROPS.lineHeight,
+		16
+	)
 
 	if (!isEditing && !hasText) {
 		return null
@@ -116,6 +126,7 @@ export const TextLabel = React.memo(function TextLabel<
 						dir="auto"
 						datatype="wysiwyg"
 						defaultValue={text}
+						style={editingScaleStyle}
 						onFocus={handleFocus}
 						onChange={handleChange}
 						onKeyDown={handleKeyDown}
