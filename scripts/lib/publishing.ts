@@ -135,7 +135,8 @@ export async function publish() {
 		await retry(
 			async () => {
 				// 1. Pack with Yarn so `workspace:*` deps are rewritten to concrete
-				//    versions in the tarball's package.json. Runs the prepack (build).
+				//    versions in the tarball's package.json. Runs each package's
+				//    prepack (build) if it defines one.
 				await exec('yarn', ['pack', '--out', 'package.tgz'], {
 					pwd: packageDetails.dir,
 					processStdoutLine: nicelog,

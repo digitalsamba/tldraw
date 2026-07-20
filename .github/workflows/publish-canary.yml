@@ -28,18 +28,27 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: 'public-yarn.lock'
 
-      - name: Ensure npm supports trusted publishing (>= 11.5.1)
-        run: |
-          npm install -g npm@latest
-          npm --version
-
       - name: Enable corepack
         run: corepack enable
+
+      - name: Install global npm that supports OIDC trusted publishing
+        run: npm install -g npm@^11
 
       - name: Install dependencies
         run: yarn
 
       - name: Publish Canary Packages
-        run: yarn tsx ./scripts/publish-canary.ts
+        # Verify npm meets the OIDC trusted-publishing floor using the npm that
+        # actually runs in THIS step (corepack can shadow the global npm), then
+        # publish. Fail loudly rather than silently falling back to a non-OIDC npm.
+        run: |
+          NPM_VERSION="$(npm --version)"
+          echo "Using npm $NPM_VERSION"
+          MIN=11.5.1
+          if [ "$(printf '%s\n%s\n' "$MIN" "$NPM_VERSION" | sort -V | head -n1)" != "$MIN" ]; then
+            echo "npm $NPM_VERSION is below the required $MIN for OIDC trusted publishing" >&2
+            exit 1
+          fi
+          yarn tsx ./scripts/publish-canary.ts
         env:
           GH_TOKEN: ${{ github.token }}
