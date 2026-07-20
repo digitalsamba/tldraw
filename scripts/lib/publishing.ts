@@ -6,6 +6,7 @@ import { compare, parse } from 'semver'
 import { exec } from './exec'
 import { BUBLIC_ROOT } from './file'
 import { nicelog } from './nicelog'
+import { buildNpmPublishArgs, getPublishTag, isRepublishConflict } from './npm-publish'
 
 export type PackageDetails = {
 	name: string
@@ -109,54 +110,56 @@ function topologicalSortPackages(packages: Record<string, PackageDetails>) {
 }
 
 export async function publish() {
-	const npmToken = process.env.NPM_TOKEN
-	if (!npmToken) {
-		throw new Error('NPM_TOKEN not set')
-	}
+	// OIDC "trusted publishing": no NPM_TOKEN. The npm CLI (>= 11.5.1) exchanges
+	// the GitHub Actions OIDC id-token for a short-lived npm credential itself,
+	// as long as `id-token: write` is granted and no auth token is configured.
+	//
+	// We pack each package with Yarn (which rewrites `workspace:*` deps to real
+	// versions in the tarball) and upload the tarball with the npm CLI (which
+	// speaks OIDC). This keeps Yarn 3.5 while getting tokenless publishing.
 
-	execSync(`yarn config set npmAuthToken ${npmToken}`, { stdio: 'inherit' })
-	execSync(`yarn config set npmRegistryServer https://registry.npmjs.org`, { stdio: 'inherit' })
+	// Set to true ONLY when publishing from a PUBLIC repo and you want npm
+	// provenance attestations. Provenance generation fails on private repos.
+	const provenance = false
 
 	const packages = getAllPackageDetails()
 
 	const publishOrder = topologicalSortPackages(packages)
 
 	for (const packageDetails of publishOrder) {
-		const prereleaseTag = parse(packageDetails.version)?.prerelease[0] ?? 'latest'
+		const tag = getPublishTag(packageDetails.version)
 		nicelog(
-			`Publishing ${packageDetails.name} with version ${packageDetails.version} under tag @${prereleaseTag}`
+			`Publishing ${packageDetails.name} with version ${packageDetails.version} under tag @${tag}`
 		)
 
 		await retry(
 			async () => {
+				// 1. Pack with Yarn so `workspace:*` deps are rewritten to concrete
+				//    versions in the tarball's package.json. Runs the prepack (build).
+				await exec('yarn', ['pack', '--out', 'package.tgz'], {
+					pwd: packageDetails.dir,
+					processStdoutLine: nicelog,
+					processStderrLine: nicelog,
+				})
+
+				// 2. Upload the tarball with the OIDC-capable npm CLI.
 				let output = ''
 				try {
-					await exec(
-						`yarn`,
-						[
-							'npm',
-							'publish',
-							'--tag',
-							String(prereleaseTag),
-							'--tolerate-republish',
-							'--access',
-							'public',
-						],
-						{
-							pwd: packageDetails.dir,
-							processStdoutLine: (line) => {
-								output += line + '\n'
-								nicelog(line)
-							},
-							processStderrLine: (line) => {
-								output += line + '\n'
-								nicelog(line)
-							},
-						}
-					)
+					await exec('npm', buildNpmPublishArgs({ tarball: 'package.tgz', tag, provenance }), {
+						pwd: packageDetails.dir,
+						processStdoutLine: (line) => {
+							output += line + '\n'
+							nicelog(line)
+						},
+						processStderrLine: (line) => {
+							output += line + '\n'
+							nicelog(line)
+						},
+					})
 				} catch (e) {
-					if (output.includes('You cannot publish over the previously published versions')) {
-						// --tolerate-republish seems to not work for canary versions??? so let's just ignore this error
+					if (isRepublishConflict(output)) {
+						// Version already on the registry — treat as success so re-runs
+						// (canary re-pushes, manual recovery) are idempotent.
 						return
 					}
 					throw e
