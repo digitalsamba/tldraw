@@ -555,6 +555,9 @@ export const LANGUAGES: readonly [{
     readonly locale: "ar";
     readonly label: "عربي";
 }, {
+    readonly locale: "bg";
+    readonly label: "Български";
+}, {
     readonly locale: "ca";
     readonly label: "Català";
 }, {

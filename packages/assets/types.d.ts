@@ -178,6 +178,7 @@ export type AssetUrls = {
 	}
 	translations: {
 		ar: string
+		bg: string
 		ca: string
 		da: string
 		de: string

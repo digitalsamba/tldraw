@@ -4,6 +4,7 @@
 /** @public */
 export const LANGUAGES = [
 	{ locale: 'ar', label: 'عربي' },
+	{ locale: 'bg', label: 'Български' },
 	{ locale: 'ca', label: 'Català' },
 	{ locale: 'da', label: 'Danish' },
 	{ locale: 'de', label: 'Deutsch' },
