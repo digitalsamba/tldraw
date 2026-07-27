@@ -191,6 +191,7 @@ import iconsWarningTriangle from './icons/icon/warning-triangle.svg'
 import iconsZoomIn from './icons/icon/zoom-in.svg'
 import iconsZoomOut from './icons/icon/zoom-out.svg'
 import translationsAr from './translations/ar.json'
+import translationsBg from './translations/bg.json'
 import translationsCa from './translations/ca.json'
 import translationsDa from './translations/da.json'
 import translationsDe from './translations/de.json'
@@ -407,6 +408,7 @@ export function getAssetUrlsByImport(opts) {
 		},
 		translations: {
 			ar: formatAssetUrl(translationsAr, opts),
+			bg: formatAssetUrl(translationsBg, opts),
 			ca: formatAssetUrl(translationsCa, opts),
 			da: formatAssetUrl(translationsDa, opts),
 			de: formatAssetUrl(translationsDe, opts),

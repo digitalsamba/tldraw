@@ -4,6 +4,10 @@
 		"label": "عربي"
 	},
 	{
+		"locale": "bg",
+		"label": "Български"
+	},
+	{
 		"locale": "ca",
 		"label": "Català"
 	},
